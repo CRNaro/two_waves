@@ -8,10 +8,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import Nav from './Nav'
 
+
+//color scheme Tiki style:  Linen = #EFE6DD, Vanilla = #F3DFA2, Verdigris = #7EBDC2, 
+//                          Persian Red = #BB4430, Raisin Black = #231F20 
 const StyledHeader = styled.div`
     position: fixed;
-    background-color: rgba(173, 216, 230, ${props => props.transparent ? '0' : 0.7});
+    background-color: rgba(173, 216, 230, );
     padding: 20px;
     display: flex;
     justify-content: ${props => props.shrink ? 'flex-start' : 'space-between'};
@@ -23,15 +27,27 @@ const StyledHeader = styled.div`
     height: ${props => props.shrink ? '100vh' : '100px'};
     transition: background-color 0.5s ease;
     flex-direction: ${props => props.shrink ? 'column' : 'row'};
-    opacity: ${props => props.transparent ? 0.4 : 1};
+    opacity: ${props => props.shrink ? 1 : props.transparent ? 0.4 : 1};
   `;
-  //transition: opacity 10s ease;
-const StyledH1 = styled.h1`
-opacity: ${props => 1 - props.scrollPosition};
-    
+  //
+// const StyledH1 = styled.h1`
+//     opacity:  ${props => props.shrink ? (1 - props.scrollPosition) : (1 - props.scrollPosition)};
+//     transition: opacity 10s ease;
+//     writing-mode: ${props => props.shrink ? 'vertical-rl' : 'horizontal-tb'};
+//     text-orientation: upright;
+//     `;
+const StyledH1Top = styled.h1`
+    opacity: ${props => 1 - props.scrollPosition};
+    writing-mode: horizontal-tb;
+    text-orientation: upright;
+    transition: opacity 5s;
+`;
+
+const StyledH1Left = styled.h1`
+    opacity: ${props =>  props.scrollPosition};
     writing-mode: ${props => props.shrink ? 'vertical-rl' : 'horizontal-tb'};
     text-orientation: upright;
-    `;
+`;
 
 const StyledLetter = styled.div`
 display:  ${props => props.shrink ? 'block' : 'inline-block'};
@@ -50,6 +66,7 @@ export default function Header() {
 
     const handleScroll = () => {
         const offset = window.scrollY;
+        const maxScroll = document.body.scrollHeight - window.innerHeight;
         if (offset > 50){
             setTransparent(true);
             setShrink(true);
@@ -57,7 +74,7 @@ export default function Header() {
             setTransparent(false);
             setShrink(false);
         }
-        setScrollPosition(offset / window.innerHeight);
+        setScrollPosition(offset / maxScroll, 1);
     }
     
     useEffect(() => {
@@ -68,10 +85,17 @@ export default function Header() {
     }, [])
 
     return(
+        
         <StyledHeader transparent={transparent} shrink={shrink}>
         
-            <StyledH1 transparent={transparent}>{text}</StyledH1>
-       
+            {/* <StyledH1 scrollPosition={scrollPosition} transparent={transparent}>{text}</StyledH1> */}
+            {shrink ? (
+    <StyledH1Left scrollPosition={scrollPosition}>{text}</StyledH1Left>
+) : (
+    <StyledH1Top scrollPosition={scrollPosition}>{text}</StyledH1Top>
+)}
+    <Nav />
         </StyledHeader>
+        
     )
 }

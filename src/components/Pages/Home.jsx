@@ -7,55 +7,69 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import backgroundImage from '../../assets/images/trees.jpeg';
+import imageOfMe from '../../assets/images/medrawingstyle.png';
 
 const StyledCard = styled(Card)`
-    background-color: rgba(173, 216, 230, 0.1);
+    background-color: rgba(247, 233, 186, 1);
     width: 50vw;
-    height: 200vh;
-    float: left;
-    margin: 40px;   
+    height: 100vh;
+    margin-left: 40px;
+    margin-top: 300px; 
+    margin-bottom: 20px;  
+    box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .25);
+    position: relative;
+    z-index: 2;
+    left: 80px;
   `;
 const MainContent = styled.div`
     padding-top: 10%;
 `;
+const CardContainer = styled.div`
+display: flex;
+justify-content: space-between;
+`;
+const StyledCardRight = styled(Card)`
+background-color: rgba(173, 216, 230, 0.1);
+width: 75vw;
+height: 40vh;
+
+margin-top: -30px; 
+margin-bottom: 20px; 
+box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .25);
+`
+const StyledImage = styled.img`
+    width: 75vw;
+    height: 125vh;
+    margin-top: 25px;
+    margin-left: 0px;
+    margin-right: -40px;
+    box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .25);
+    position: relative;
+    `
+
 
 export default function Home() {
     return (
         <MainContent>
+            <CardContainer>
         <StyledCard>
         <CardContent>
             <Typography variant="h5" component="div">
-            Dear Visitor,
-<br/>
-Welcome, and thank you for taking the time to visit my professional webpage. 
-I am genuinely grateful for your interest in getting to know me and exploring 
-my work. 
-<br/>
-In a world filled with endless options, the fact that you've chosen to spend 
-your valuable time here means a great deal to me. Whether you're a colleague, 
-a potential collaborator, or simply curious about what I have to offer, I am 
-honored by your presence.
-<br/>
-This webpage is not just a collection of information about my career and
-accomplishments; it's a reflection of my passion, dedication, and commitment 
-to growing and learning in all facets of my life. This is a platform where I strive 
-to showcase my skills, experiences, and the projects that I'm truly proud of.
-As you navigate through these pages, I hope you'll gain insight into who I am 
-as a professional and as an individual. Whether you're seeking collaboration 
-opportunities, exploring potential partnerships, or simply looking to connect, 
-I'm excited about the possibility of us crossing paths and creating meaningful 
-connections.
-<br/>
-Once again, thank you for stopping by. Your visit is appreciated more than words 
-can express. Please feel free to reach out if you have any questions or if 
-there's anything I can assist you with.
-<br/>
-Warm regards,
-<br/>
-Christohper R Naro
+
             </Typography>
         </CardContent>
     </StyledCard>
+  
+            <StyledImage src={imageOfMe} alt="drawing of me"/>
+    
+        </CardContainer>
     </MainContent>
     );   
 }
+
+{/* <StyledCardRight>
+<CardContent style={{ padding: 0 }}>
+    <img src={imageOfMe} alt="drawing of me" style={{width: "100%", height: "100%"}}/>
+</CardContent>
+</StyledCardRight> */}
