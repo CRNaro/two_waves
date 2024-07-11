@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './components/Pages/Home'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { Global, css } from '@emotion/react';
-import Header from './components/Header/Header'
+import NameHeader from './components/Header/NameHeader'
+
 
 
 
@@ -21,15 +22,17 @@ const theme = createTheme({
 
 function App() {
   return(
+    
     <ThemeProvider theme={theme}>
       <Global styles={css`body{
         background-color: ${theme.palette.primary.main};
       }`}/>
+ 
       <Router>
-        <Header />
-        <Routes>
+       <NameHeader />
+       <Routes>
           <Route path="/" element={<Home />} />
-        </Routes>
+         </Routes>
       </Router>
     </ThemeProvider>
   )

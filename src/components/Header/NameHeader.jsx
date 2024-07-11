@@ -8,7 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import Nav from './Nav'
+
 
 
 //color scheme Tiki style:  Linen = #EFE6DD, Vanilla = #F3DFA2, Verdigris = #7EBDC2, 
@@ -23,7 +23,7 @@ const StyledHeader = styled.div`
     top: 0;
     left: ${props => props.shrink ? '0' : 'auto'};
     z-index: 1000;
-    width: ${props => props.shrink ? '70px' : '90%'};
+    width: ${props => props.shrink ? '70px' : '50%'};
     height: ${props => props.shrink ? '100vh' : '100px'};
     transition: background-color 0.5s ease;
     flex-direction: ${props => props.shrink ? 'column' : 'row'};
@@ -52,16 +52,16 @@ const StyledH1Left = styled.h1`
 const StyledLetter = styled.div`
 display:  ${props => props.shrink ? 'block' : 'inline-block'};
 transform: ${props => props.shrink ? 'rotate(90deg)' : 'none'};
-margin: ${props => props.shrink ? '-10px 0' : '0'};
+margin: ${props => props.shrink ? '0 0 -2px 0' : '0 10px 0 0'};
     `
 
-export default function Header() {
+export default function NameHeader() {
     const [transparent, setTransparent] = useState(false);
     const [shrink, setShrink] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
 
-    const text = "Christopher .R. Naro".split("").map((letter, index) => (
-        <StyledLetter shrink={shrink} key={index}>{letter}</StyledLetter>
+    const text = "Christopher  R.  Naro".split("").map((word, index) => (
+        <StyledLetter shrink={shrink} key={index}>{word}</StyledLetter>
     ));
 
     const handleScroll = () => {
@@ -94,7 +94,7 @@ export default function Header() {
 ) : (
     <StyledH1Top scrollPosition={scrollPosition}>{text}</StyledH1Top>
 )}
-    <Nav />
+  
         </StyledHeader>
         
     )

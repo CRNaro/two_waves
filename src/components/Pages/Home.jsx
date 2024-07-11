@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import backgroundImage from '../../assets/images/trees.jpeg';
 import imageOfMe from '../../assets/images/medrawingstyle.png';
+import NavCard from '../Header/NavCard';
+import NavDrawer from '../Header/NavDrawer'
 
 const StyledCard = styled(Card)`
     background-color: rgba(247, 233, 186, 1);
@@ -47,20 +49,49 @@ const StyledImage = styled.img`
     box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .25);
     position: relative;
     `
+const StyledTypography = styled(Typography)`
+    position: absolute;
+    left: 18%;
+    top: 40%;
+    z-index: 3;
+    font-size: 1.5rem;
+`
+const StyledCardBehind = styled(Card)`
+position: absolute;
+background-color: #231F20;
+margin-left: 60px;
+width: 50vw;
+height: 400vh;
+z-index: 0;
+box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .25);
+`
+const StyledNavDrawer = styled(NavDrawer)`
+
+margin-left: 80%;
+`
+
 
 
 export default function Home() {
     return (
         <MainContent>
+             <StyledNavDrawer />
+               <StyledTypography>
+                Full Stack Developer <br></br>
+                Let's make beautiful <br></br>
+                websites together
+               </StyledTypography>
             <CardContainer>
         <StyledCard>
         <CardContent>
+   
             <Typography variant="h5" component="div">
-
+            <NavCard />
             </Typography>
         </CardContent>
     </StyledCard>
-  
+    <StyledCardBehind>
+    </StyledCardBehind>
             <StyledImage src={imageOfMe} alt="drawing of me"/>
     
         </CardContainer>
