@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 import backgroundImage from '../../assets/images/trees.jpeg';
 import imageOfMe from '../../assets/images/medrawingstyle.png';
 import NavCard from '../Header/NavCard';
-import NavDrawer from '../Header/NavDrawer'
+
 
 const StyledCard = styled(Card)`
     background-color: rgba(247, 233, 186, 1);
@@ -55,6 +55,7 @@ const StyledTypography = styled(Typography)`
     top: 40%;
     z-index: 3;
     font-size: 1.5rem;
+    color: white;
 `
 const StyledCardBehind = styled(Card)`
 position: absolute;
@@ -65,21 +66,18 @@ height: 400vh;
 z-index: 0;
 box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .25);
 `
-const StyledNavDrawer = styled(NavDrawer)`
 
-margin-left: 80%;
-`
 
 
 
 export default function Home() {
     return (
         <MainContent>
-             <StyledNavDrawer />
+            
                <StyledTypography>
-                Full Stack Developer <br></br>
-                Let's make beautiful <br></br>
-                websites together
+                I am a Full Stack Developer <br></br>
+                who loves crafting creative and <br></br>
+                user-friendly web experiences
                </StyledTypography>
             <CardContainer>
         <StyledCard>

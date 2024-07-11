@@ -8,7 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-
+import NavDrawer from '../Header/NavDrawer'
 
 
 //color scheme Tiki style:  Linen = #EFE6DD, Vanilla = #F3DFA2, Verdigris = #7EBDC2, 
@@ -54,6 +54,11 @@ display:  ${props => props.shrink ? 'block' : 'inline-block'};
 transform: ${props => props.shrink ? 'rotate(90deg)' : 'none'};
 margin: ${props => props.shrink ? '0 0 -2px 0' : '0 10px 0 0'};
     `
+    const StyledNavDrawer = styled(NavDrawer)`
+  position: fixed;
+  top: 8%; // Adjust this value as needed
+  right: 5%; // Adjust this value as needed
+`;
 
 export default function NameHeader() {
     const [transparent, setTransparent] = useState(false);
@@ -94,8 +99,9 @@ export default function NameHeader() {
 ) : (
     <StyledH1Top scrollPosition={scrollPosition}>{text}</StyledH1Top>
 )}
-  
+    <StyledNavDrawer />
         </StyledHeader>
         
     )
+
 }
