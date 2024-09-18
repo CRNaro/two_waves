@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
         width: '25%',
         height: '100vh',
         position: 'fixed',
+        zIndex: 1000,
     },
     cardContainer: {
         display: 'flex',
@@ -42,15 +43,7 @@ const useStyles = makeStyles((theme) => ({
         //     left: '0px',
         // },
     },
-    introCard: {
-        // position: 'absolute',
-        backgroundColor: 'rgba(247, 233, 186, 1)',
-        // marginLeft: '60px',
-        width: '60vw',
-        height: '200vh',
-        // zIndex: 0,
-        // boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
-    },
+ 
     styledImage: {
         width: '60%',
         borderRadius: '1%',
@@ -100,6 +93,12 @@ export default function Home() {
        
         <Typography>    
             Full Stack Developer
+        </Typography>
+        <Typography>
+            React | Node | Express | MongoDB
+        </Typography>
+        <Typography>
+            Notes 
         </Typography>
             </Card>
 
