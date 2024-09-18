@@ -38,8 +38,9 @@ function App() {
         <NameHeader />
         <div style={{ display: 'flex' }}>
         <Home />
+      
         <Routes>
-    
+        
           <Route path="/" element={<Window />}>
           
             <Route path="about" element={<AboutMe />} />
