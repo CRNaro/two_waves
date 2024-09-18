@@ -45,16 +45,25 @@ const StyledH1Top = styled.h1`
 
 const StyledH1Left = styled.h1`
     opacity: ${props =>  props.scrollPosition};
-    writing-mode: ${props => props.shrink ? 'vertical-rl' : 'horizontal-tb'};
+    writing-mode: ${props => props.windowWidth <= 600 || props.shrink ? 'vertical-rl' : 'horizontal-tb'};
     text-orientation: upright;
+
+    @media (max-width: 600px) {
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+    }
 `;
 
 const StyledLetter = styled.div`
-display:  ${props => props.shrink ? 'block' : 'inline-block'};
+display:  ${props =>  props.shrink ? 'block' : 'inline-block'};
 transform: ${props => props.shrink ? 'rotate(90deg)' : 'none'};
 margin: ${props => props.shrink ? '0 0 -2px 0' : '0 10px 0 0'};
+
+@media (max-width: 600px) {
+    font-size: 1rem;
+}
     `
-    const StyledNavDrawer = styled(NavDrawer)`
+const StyledNavDrawer = styled(NavDrawer)`
   position: fixed;
   top: 8%; // Adjust this value as needed
   right: 5%; // Adjust this value as needed
@@ -64,8 +73,21 @@ export default function NameHeader() {
     const [transparent, setTransparent] = useState(false);
     const [shrink, setShrink] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
 
-    const text = "Christopher  R.  Naro".split("").map((word, index) => (
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
+    const text = "Christopher R. Naro".split("").map((word, index) => (
         <StyledLetter shrink={shrink} key={index}>{word}</StyledLetter>
     ));
 
@@ -81,13 +103,16 @@ export default function NameHeader() {
         }
         setScrollPosition(offset / maxScroll, 1);
     }
-    
+    // Scroll effect for the header text
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
     }, [])
+    // Display size text to the side
+
+
 
     return(
         
@@ -95,7 +120,7 @@ export default function NameHeader() {
         
             {/* <StyledH1 scrollPosition={scrollPosition} transparent={transparent}>{text}</StyledH1> */}
             {shrink ? (
-    <StyledH1Left scrollPosition={scrollPosition}>{text}</StyledH1Left>
+    <StyledH1Left scrollPosition={scrollPosition} windowWidth={windowWidth}>{text}</StyledH1Left>
 ) : (
     <StyledH1Top scrollPosition={scrollPosition}>{text}</StyledH1Top>
 )}

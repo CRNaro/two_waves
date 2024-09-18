@@ -2,9 +2,15 @@ import { useState } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './components/Pages/Home'
+import AboutMe from './components/Pages/AboutMe'
+import Contact from './components/Pages/Contact'
+import Portfolio from './components/Pages/Portfolio'
+import Resume from './components/Pages/Resume'
+import NameHeader from './components/Header/NameHeader'
+import Window from './components/Pages/Window'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { Global, css } from '@emotion/react';
-import NameHeader from './components/Header/NameHeader'
+
 
 
 
@@ -28,11 +34,21 @@ function App() {
         background-color: ${theme.palette.primary.main};
       }`}/>
  
-      <Router>
-       <NameHeader />
-       <Routes>
-          <Route path="/" element={<Home />} />
-         </Routes>
+ <Router>
+        <NameHeader />
+        <div style={{ display: 'flex' }}>
+        <Home />
+        <Routes>
+    
+          <Route path="/" element={<Window />}>
+          
+            <Route path="about" element={<AboutMe />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="portfolio" element={<Portfolio />} />
+            <Route path="resume" element={<Resume />} />
+          </Route>
+        </Routes>
+        </div>
       </Router>
     </ThemeProvider>
   )

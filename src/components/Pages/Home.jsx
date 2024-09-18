@@ -1,104 +1,138 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
+import { makeStyles } from "@mui/styles";
 import React from "react";
 import Card from "@mui/material/Card";
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import backgroundImage from '../../assets/images/trees.jpeg';
-import imageOfMe from '../../assets/images/medrawingstyle.png';
-import NavCard from '../Header/NavCard';
+import CardActionArea from "@mui/material/CardActionArea";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import backgroundImage from "../../assets/images/trees.jpeg";
+import imageOfMe from "../../assets/images/medrawingstyle.png";
+import NavCard from "../Header/NavCard";
 
-
-const StyledCard = styled(Card)`
-    background-color: rgba(247, 233, 186, 1);
-    width: 50vw;
-    height: 100vh;
-    margin-left: 40px;
-    margin-top: 300px; 
-    margin-bottom: 20px;  
-    box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .25);
-    position: relative;
-    z-index: 2;
-    left: 80px;
-  `;
-const MainContent = styled.div`
-    padding-top: 10%;
-`;
-const CardContainer = styled.div`
-display: flex;
-justify-content: space-between;
-`;
-const StyledCardRight = styled(Card)`
-background-color: rgba(173, 216, 230, 0.1);
-width: 75vw;
-height: 40vh;
-
-margin-top: -30px; 
-margin-bottom: 20px; 
-box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .25);
-`
-const StyledImage = styled.img`
-    width: 75vw;
-    height: 125vh;
-    margin-top: 25px;
-    margin-left: 0px;
-    margin-right: -40px;
-    box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .25);
-    position: relative;
-    `
-const StyledTypography = styled(Typography)`
-    position: absolute;
-    left: 18%;
-    top: 40%;
-    z-index: 3;
-    font-size: 1.5rem;
-    color: white;
-`
-const StyledCardBehind = styled(Card)`
-position: absolute;
-background-color: #231F20;
-margin-left: 60px;
-width: 50vw;
-height: 400vh;
-z-index: 0;
-box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, .25);
-`
-
-
+const useStyles = makeStyles((theme) => ({
+    mainContent: {
+        paddingTop: '10%',
+        width: '25%',
+        height: '100vh',
+        position: 'fixed',
+    },
+    cardContainer: {
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
+    navCard: {
+        backgroundColor: 'rgba(247, 233, 186, 1) !important',
+        width: '100%',
+        height: '100%',
+        // marginLeft: '40px',
+        // marginTop: '300px',
+        // marginBottom: '20px',
+        // boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
+        // position: 'relative',
+        // zIndex: 2,
+        // left: '80px',
+        // '@media (max-width: 600px)': {
+        //     width: '100vw',
+        //     height: '50vh',
+        //     marginLeft: '0px',
+        //     marginTop: '150px',
+        //     left: '0px',
+        // },
+    },
+    introCard: {
+        // position: 'absolute',
+        backgroundColor: 'rgba(247, 233, 186, 1)',
+        // marginLeft: '60px',
+        width: '60vw',
+        height: '200vh',
+        // zIndex: 0,
+        // boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
+    },
+    styledImage: {
+        width: '60%',
+        borderRadius: '1%',
+        border: '1px solid black',
+        padding: '5px',
+        backgroundColor: '#111313',
+        // height: '80%',
+        // marginTop: '25px',
+        // marginLeft: '0px',
+        // marginRight: '-40px',
+        boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
+        // position: 'relative',
+    },
+    styledTypography: {
+        // position: 'absolute',
+        // left: '5%',
+        // top: '2%',
+        // zIndex: 3,
+        // fontSize: '1.5rem',
+        // color: 'white',
+    },
+}));
 
 
 export default function Home() {
-    return (
-        <MainContent>
-            
-               <StyledTypography>
-                I am a Full Stack Developer <br></br>
-                who loves crafting creative and <br></br>
-                user-friendly web experiences
-               </StyledTypography>
-            <CardContainer>
-        <StyledCard>
-        <CardContent>
-   
-            <Typography variant="h5" component="div">
-            <NavCard />
-            </Typography>
-        </CardContent>
-    </StyledCard>
-    <StyledCardBehind>
-    </StyledCardBehind>
-            <StyledImage src={imageOfMe} alt="drawing of me"/>
+  const classes = useStyles();
+  return (
+    <div className={classes.mainContent}>
+      <div className={classes.cardContainer}>
+        
     
-        </CardContainer>
-    </MainContent>
-    );   
+        <Card className={classes.navCard}>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  <NavCard />
+                </Typography>
+                
+              </CardContent>
+             
+              <CardMedia>
+          <img
+            className={classes.styledImage}
+            src={imageOfMe}
+            alt="drawing of me"
+          />
+        </CardMedia>
+       
+        <Typography>    
+            Full Stack Developer
+        </Typography>
+            </Card>
+
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          
+            {/* <Card className={classes.navCard}>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  <NavCard />
+                </Typography>
+              </CardContent>
+            </Card> */}
+         
+          
+            {/* <Card className={classes.introCard}>
+            <Box sx={{ display: 'flex', gap: 2 }}>
+                <Typography className={classes.introCard}>
+                
+                </Typography>
+              </Box>
+            </Card> */}
+          
+        </Box>
+        
+      </div>
+    </div>
+  );
 }
 
-{/* <StyledCardRight>
+{
+  /* <StyledCardRight>
 <CardContent style={{ padding: 0 }}>
     <img src={imageOfMe} alt="drawing of me" style={{width: "100%", height: "100%"}}/>
 </CardContent>
-</StyledCardRight> */}
+</StyledCardRight> */
+}

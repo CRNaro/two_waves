@@ -11,6 +11,9 @@ const StyledNav = styled.nav`
     display: flex;
     justify-content: flex-end;
     z-index: 3;
+
+    @media (max-width: 600px) {
+        flex-direction: column;
 `
 const StyledLink = styled(Link)`
     margin:  25px 0 0 10px;
