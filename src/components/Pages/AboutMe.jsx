@@ -8,7 +8,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import backgroundImage from "../../assets/images/trees.jpeg";
+import backgroundTreeImg from "../../assets/images/trees.jpeg";
 import imageOfMe from "../../assets/images/medrawingstyle.png";
 import NavCard from "../Header/NavCard";
 import "../../styles/AboutMe.css";
@@ -26,9 +26,8 @@ const useStyles = makeStyles((theme) => ({
           height: 'auto',
           width: '60vw',
           marginLeft: '45%',
-          backgroundImage: `url(${backgroundImage})`,
-        backgroundColor: 'lightblue', // Added for debugging
-        
+          backgroundImage: `url(${backgroundTreeImg})`,
+        boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
         },
         aboutCard: {
                 backgroundColor: 'rgba(247, 233, 186, 1)',
@@ -44,23 +43,7 @@ const useStyles = makeStyles((theme) => ({
           zIndex: 2,
         //   left: '80px',
         },
-        styledCardRight: {
-        //   backgroundColor: 'rgba(173, 216, 230, 0.1)',
-        //   width: '75vw',
-        //   height: '40vh',
-        //   marginTop: '-30px',
-        //   marginBottom: '20px',
-        //   boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
-        },
-        styledImage: {
-        //   width: '75vw',
-        //   height: '125vh',
-        //   marginTop: '25px',
-        //   marginLeft: '0px',
-        //   marginRight: '-40px',
-        //   boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
-        //   position: 'relative',
-        },
+        
         styledTypography: {
         //   position: 'absolute',
           left: '13%',
@@ -70,40 +53,7 @@ const useStyles = makeStyles((theme) => ({
           textAlign: 'left',
         //   color: 'white',
         },
-        styledCardBehind: {
-        //   position: 'absolute',
-        //   backgroundColor: '#231F20',
-        //   marginLeft: '60px',
-        //   width: '60%',
-        //   height: '200vh',
-        //   zIndex: 0,
-        //   boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
-        //   left: '80px',
-        },
-        styledCardContent: {
-        
-        //   display: 'flex',
-        //   flexDirection: 'column',
-        //   justifyContent: 'space-between',
-        //   alignItems: 'start',
-        //   overflow: 'auto',
-        },
-        paragraphStyledTypography: {
-        //   position: 'absolute',
-        //   left: '13%',
-        //   top: '40%',
-        //   zIndex: 3,
-        //   fontSize: '1.5rem',
-        //   color: 'white',
-        },
-        imgCard: {
-        //   backgroundImage: `url(${backgroundImage})`,
-        //   backgroundSize: 'cover',
-        //   backgroundPosition: 'center',
-        //   zIndex: 3,
-        //   width: '100%',
-        //   height: '25%',
-        },
+       
       
       }));
 
@@ -111,8 +61,8 @@ export default function About() {
         const classes = useStyles();
 return (
         <Box className={classes.root}>
-                <Typography variant="h2">
-                        About Me
+                <Typography variant="h2" style={{ color: 'white'}}>
+                        ABOUT ME
                         </Typography>
         <Card className={classes.aboutCard} style={{ backgroundColor: 'rgba(247, 233, 186, .9)'}}>
         <CardContent className={classes.styledCardContent}>
