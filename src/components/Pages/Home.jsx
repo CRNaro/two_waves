@@ -1,17 +1,16 @@
 import styled from "@emotion/styled";
 import { makeStyles } from "@mui/styles";
 import React from "react";
-import Card from "@mui/material/Card";
+import { Card, CardContent, CardMedia, Button, Typography, Box, Link, Grid, TextField } from "@mui/material";
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import CardActionArea from "@mui/material/CardActionArea";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 import backgroundImage from "../../assets/images/trees.jpeg";
 import imageOfMe from "../../assets/images/medrawingstyle.png";
 import NavCard from "../Header/NavCard";
 import AboutMe from "./AboutMe";
+
 
 const useStyles = makeStyles((theme) => ({
   mainContent: {
@@ -58,16 +57,33 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "10px 5px 10px 5px rgba(0, 0, 0, .25)",
     // position: 'relative',
   },
-  styledTypography: {
-    // position: 'absolute',
-    // left: '5%',
-    // top: '2%',
-    // zIndex: 3,
-    // fontSize: '1.5rem',
-    // color: 'white',
+linkedInLink: {
+  color: 'black !important',
+  
+    marginBottom: '30px',
+    padding: '10%',
+    transform: 'scale(3.0)',
   },
-
+// gitHubLink: {
+//     color: 'black !important',
  
+//     marginBottom: '30px',
+//     padding: '10%',
+//     transform: 'scale(3.0)',
+// },
+// instagramIcon: {
+//     color: 'black !important',
+    
+//     padding: '10%',
+//     marginBottom: '10px',
+// },
+ icon: {
+    color: 'black !important',
+   marginTop: '10px',
+    marginBottom: '10px',
+    padding: '5%',
+   fontSize: '2rem',
+ },
 }));
 
 export default function Home() {
@@ -94,7 +110,20 @@ export default function Home() {
 
           <Typography>Full Stack Developer</Typography>
           <Typography>React | Node | Express | MongoDB</Typography>
-          <Typography>Notes</Typography>
+          <Typography>Email: CRNaro@gmail.com</Typography>
+          <Box>
+          <Link href="https://www.linkedin.com/in/christophernaro/" target='_blank' rel='noopener' className={classes.icon}>
+            <LinkedInIcon className={classes.icon}/>
+            
+          </Link>
+          <Link href="https://github.com/CRNaro" target='_blank' rel='noopener' className={classes.icon}>
+            <GitHubIcon className={classes.icon}/>
+         
+          </Link>
+          <Link href="https://www.instagram.com/christopher.r.naro/" target='_blank' rel='noopener' className={classes.icon}>
+            <InstagramIcon className={classes.icon}/>
+            </Link>
+          </Box>
         </Card>
 
        

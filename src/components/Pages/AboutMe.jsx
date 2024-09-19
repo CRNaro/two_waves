@@ -1,18 +1,12 @@
 import styled from "@emotion/styled";
 import { makeStyles } from "@mui/styles";
 import React from "react";
-import Card from "@mui/material/Card";
-import CardActionArea from "@mui/material/CardActionArea";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
+import { Card, CardContent, CardMedia, Button, Typography, Box, Link, Grid, TextField } from "@mui/material";
 import backgroundTreeImg from "../../assets/images/trees.jpeg";
 import imageOfMe from "../../assets/images/medrawingstyle.png";
 import NavCard from "../Header/NavCard";
 import "../../styles/AboutMe.css";
-import { Box } from "@mui/system";
+
 
 
 const useStyles = makeStyles((theme) => ({

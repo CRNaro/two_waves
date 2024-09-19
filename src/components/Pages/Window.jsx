@@ -1,10 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import { Card, CardContent, CardMedia, Button, Typography, Box, Link, Grid, TextField } from "@mui/material";
 import NavCard from '../Header/NavCard';
 
 
