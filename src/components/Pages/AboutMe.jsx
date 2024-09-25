@@ -7,7 +7,7 @@ import imageOfMe from "../../assets/images/medrawingstyle.png";
 import NavCard from "../Header/NavCard";
 import "../../styles/AboutMe.css";
 
-
+//TODO: To wordy as is.  Need to break it up into smaller sections and add images to break up the text.
 
 const useStyles = makeStyles((theme) => ({
         mainContent: {

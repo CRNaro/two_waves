@@ -1,5 +1,3 @@
-//TODO: just update this page with AboutMe page and then add in everything for the form
-
 import { useForm, ValidationError } from '@formspree/react';
 import { useState } from 'react';
 import styled from "@emotion/styled";
@@ -11,7 +9,8 @@ import imageOfMe from "../../assets/images/medrawingstyle.png";
 import NavCard from "../Header/NavCard";
 import "../../styles/AboutMe.css";
 
-
+//TODO: Get the form working properly.  It is not sending the email.
+//TODO: Make form clear after user submits.
 
 const useStyles = makeStyles((theme) => ({
         mainContent: {

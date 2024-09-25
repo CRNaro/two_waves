@@ -64,7 +64,7 @@ export default function Resume() {
 return (
         <Box className={classes.root}>
                 <Typography variant="h2" style={{ color: 'white'}}>
-                        MY RESUME
+                        RESUME
                         </Typography>
         <Card className={classes.aboutCard} style={{ backgroundColor: 'rgba(247, 233, 186, .9)'}}>
         <CardContent className={classes.styledCardContent}>

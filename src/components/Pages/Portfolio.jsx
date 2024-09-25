@@ -1,127 +1,206 @@
-import Carousel from "react-material-ui-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import CardActionArea from "@mui/material/CardActionArea";
-import imageOfMe from "../../assets/images/medrawingstyle.png";
-import styled from "@emotion/styled";
-import { makeStyles } from "@mui/styles";
-import React from "react";
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Button,
-  Typography,
-  Box,
-  Link,
-  Grid,
-  TextField,
-  Paper,
-} from "@mui/material";
-import backgroundTreeImg from "../../assets/images/trees.jpeg";
-// import imageOfMe from "../../assets/images/medrawingstyle.png";
-import NavCard from "../Header/NavCard";
-import "../../styles/AboutMe.css";
+import React, { useState } from 'react';
+import Carousel from 'react-material-ui-carousel';
+import { 
+    Paper, 
+    Typography, 
+    Box, Card, 
+    CardContent, 
+    IconButton, 
+    Dialog, 
+    DialogContent, 
+    DialogTitle } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { ArrowUpward, ArrowDownward, Close } from '@mui/icons-material';
+import imageOfMe from '../../assets/images/medrawingstyle.png';
+import backgroundTreeImg from '../../assets/images/trees.jpeg';
+import booksProj1 from '../../assets/images/books_boxes1.png';
+import booksProj2 from '../../assets/images/books_boxes2.png';
+import booksProj3 from '../../assets/images/books_boxes3.png';
+import booksProj4 from '../../assets/images/books_boxes4.png';
+import booksProj5 from '../../assets/images/books_boxes5.png';
+import booksProj6 from '../../assets/images/books_boxes6.png';
+
+//TODO: Add a description of the projects in the portfolio.  Make it so the description
+//      changes when the image changes in the carousel.  
+//TODO: Add all the projects to the carousel.  
+//TODO: Add links to projects GitHub in the description.
+//TODO: Set up nested carousel for extra images of each project.
 
 const useStyles = makeStyles((theme) => ({
-  mainContent: {
-    //   paddingTop: '30%',
-    //   backgroundColor: 'lightblue', // Added for debugging
-  },
   root: {
-    display: "flex",
-    justifyContent: "space-between",
-    height: "auto",
-    width: "60vw",
-    marginLeft: "45%",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    height: 'auto',
+    width: '60vw',
+    marginLeft: '45%',
     backgroundImage: `url(${backgroundTreeImg})`,
-    boxShadow: "10px 5px 10px 5px rgba(0, 0, 0, .25)",
+    boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
+    position: 'relative',
   },
-  title: {
-    position: 'absolute', 
-   
-    left: '50%',
-    transform: 'translateX(-50%)', 
+  pageTitle: {
+    position: 'absolute',
+    top: '10px',
+    left: '20%',
+    transform: 'translateX(-50%)',
     color: 'white',
     zIndex: 3,
   },
   portfolioCard: {
-    backgroundColor: "rgba(247, 233, 186, 1)",
-    width: "100vw",
-    height: "auto",
-    marginLeft: "40px",
-    marginRight: "40px",
-    marginTop: "200px",
-    marginBottom: "20px",
-
-    boxShadow: "10px 5px 10px 5px rgba(0, 0, 0, .25)",
-    //   position: 'relative',
+    backgroundColor: 'rgba(247, 233, 186, 1)',
+    width: '90%',
+    height: 'auto',
+    marginTop: '80px',
+    marginBottom: '20px',
+    boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
     zIndex: 2,
-    //   left: '80px',
+    position: 'relative',
   },
-
-  styledTypography: {
-    //   position: 'absolute',
-    left: "13%",
-    top: "40%",
-    zIndex: 3,
-    fontSize: "1.5rem",
-    textAlign: "left",
-    //   color: 'white',
+  carouselCard: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
   },
-    carouselCard: {
-    display: "flex",
-    // justifyContent: "center",
-    width: "100%",
-    },
   carousel: {
-    width: "64%",
-    
+    width: '60%',
+    height: '100%',
+  },
+  carouselImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'contain',
+    cursor: 'pointer',
   },
   descriptionCard: {
-    width: "40%",
+    width: '32%',
+    margin: '8px',
+    backgroundColor: 'black !important',
+    color: '#FFFFF0 !important',
   },
+  navButton: {
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    zIndex: 4,
+  },
+//  closeButton: {
+//     position: 'absolute',
+//     left: '45%',
+   
+//     // color: theme.palette.grey[500],
+//  },
 }));
 
 export default function Portfolio() {
   const classes = useStyles();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [modalImage, setModalImage] = useState('');
 
-  const items =[
-    { src: imageOfMe, alt: "me" },
-    { src: imageOfMe, alt: "me" },
-    { src: imageOfMe, alt: "me" },
+  const projects = [
+    {
+    //   src: booksProj1,
+      alt: 'me',
+      title: 'Books From Boxes',
+      description: 'Search books via GoogleBooks API and save them to your account after login and verification. Technologies used React, HTML5, CSS, MongoDB, NodeJS, ExpressJS, JWT Highlights frontend skills in ReactJS and secure user authentication using JWT, with MongoDB backend to store user data. ',
+      images: [booksProj1, booksProj2, booksProj3, booksProj4, booksProj5, booksProj6],
+    },
+    {
+      src: imageOfMe,
+      alt: 'me',
+      title: 'Project Title 2',
+      description: 'This is a description of the project#2.',
+      images: [imageOfMe, imageOfMe, imageOfMe],
+    },
+    {
+      src: imageOfMe,
+      alt: 'me',
+      title: 'Project Title 3',
+      description: 'This is a description of the project#3.',
+      images: [imageOfMe, imageOfMe, imageOfMe],
+    },
   ];
 
-  return (
-  
-    <Box className={classes.root}>
-      
-        <Typography variant="h2" className={classes.title}>
-          MY PORTFOLIO
-        </Typography>
-     
+  const handleNextImage = () => {
+    setCurrentImage((prev) => (prev + 1) % projects[currentSlide].images.length);
+  };
 
-      <Card
-        className={classes.portfolioCard}
-        style={{ backgroundColor: "rgba(247, 233, 186, .9)" }}
-      >
-        <CardContent className={classes.carouselCard}>
-          <Carousel className={classes.carousel}>
-          {items.map((item, i)=>(
-            <Paper key={i}>
-            <img src={item.src} alt={item.alt} />
-            </Paper>
-          ))}
-          </Carousel>
-          <Card className={classes.descriptionCard}>
-            <CardContent >
-                <Typography variant="h5" component="div"></Typography>
-            </CardContent>
-          </Card>
-        </CardContent>
-      </Card>
+  const handlePrevImage = () => {
+    setCurrentImage((prev) => (prev - 1 + projects[currentSlide].images.length) % projects[currentSlide].images.length);
+  };
+  const handleImageClick = (image) => {
+    setModalImage(image);
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <Box className={classes.root}>
+    
+      <Typography variant="h2" className={classes.pageTitle}>
+        PORTFOLIO
+      </Typography>
+    
+      {projects.map((project, index) => (
+        
+        <Card key={index} className={classes.portfolioCard} style={{ backgroundColor: 'rgba(247, 233, 186, .9)' }}>
+         <Typography variant="h5" component="div">
+                  {project.title}
+                </Typography>
+          <CardContent className={classes.carouselCard}>
+            <Carousel className={classes.carousel} autoPlay={false} onChange={(i) => setCurrentSlide(i)}>
+              {project.images.map((image, i) => (
+                <Paper key={i}>
+                  <img src={image} alt={project.alt} className={classes.carouselImage} onClick={() => handleImageClick(image)} />
+                </Paper>
+              ))}
+              
+            </Carousel>
+            <Card className={classes.descriptionCard}>
+              <CardContent>
+            
+                <Typography variant="body1" component="div">
+                  {project.description}
+                </Typography>
+                <Box position="relative">
+                 
+                 
+                </Box>
+              </CardContent>
+            </Card>
+          </CardContent>
+        </Card>
+      ))}
+
+        <Dialog open={open} onClose={handleClose} className={classes.modalBox} maxWidth="xl" fullWidth>
+            <DialogTitle>Image Preview</DialogTitle>
+            <IconButton aria-label="close" 
+            className={classes.closeButton} 
+            onClick={handleClose} 
+            sx={{ 
+                padding: '10px',
+                width: '50px',
+                left: '45%',
+                '&:hover': {background: 'rgba(0, 0, 0, 0.7)'} }}>
+                <Close sx={{ fontSize: '1.5rem'}} />
+            </IconButton>
+            <DialogContent>
+              <img src={modalImage} alt="modal" className={classes.modalImage} style={{ width: '100%' }} />
+            </DialogContent>
+            </Dialog>
+
     </Box>
   );
 }
+
+
+
+
+
 
 // import { Carousel } from 'react-responsive-carousel';
 // import "react-responsive-carousel/lib/styles/carousel.min.css";

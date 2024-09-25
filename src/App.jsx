@@ -11,7 +11,10 @@ import Window from './components/Pages/Window'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { Global, css } from '@emotion/react';
 
-
+//GENERAL NOTES:
+//TODO: Add a footer
+//TODO: Make sure the site is responsive
+//TODO: Make sure the site is accessible
 
 
 
