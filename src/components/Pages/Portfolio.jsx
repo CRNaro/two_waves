@@ -19,6 +19,13 @@ import booksProj3 from '../../assets/images/books_boxes3.png';
 import booksProj4 from '../../assets/images/books_boxes4.png';
 import booksProj5 from '../../assets/images/books_boxes5.png';
 import booksProj6 from '../../assets/images/books_boxes6.png';
+import dndProj1 from '../../assets/images/dndProj1.png';
+import dndProj2 from '../../assets/images/dndProj2.png';
+import dndProj3 from '../../assets/images/dndProj3.png';
+import weather1 from '../../assets/images/weather1.png';
+import weather2 from '../../assets/images/weather2.png';
+import weather3 from '../../assets/images/weather3.png';
+import weather4 from '../../assets/images/weather4.png';
 
 //TODO: Add a description of the projects in the portfolio.  Make it so the description
 //      changes when the image changes in the carousel.  
@@ -98,28 +105,57 @@ export default function Portfolio() {
   const [currentImage, setCurrentImage] = useState(0);
   const [open, setOpen] = useState(false);
   const [modalImage, setModalImage] = useState('');
+ 
 
   const projects = [
     {
     //   src: booksProj1,
-      alt: 'me',
+      alt: 'image of book website to search and save books',
       title: 'Books From Boxes',
       description: 'Search books via GoogleBooks API and save them to your account after login and verification. Technologies used React, HTML5, CSS, MongoDB, NodeJS, ExpressJS, JWT Highlights frontend skills in ReactJS and secure user authentication using JWT, with MongoDB backend to store user data. ',
       images: [booksProj1, booksProj2, booksProj3, booksProj4, booksProj5, booksProj6],
     },
     {
-      src: imageOfMe,
+    //   src: imageOfMe,
       alt: 'me',
-      title: 'Project Title 2',
-      description: 'This is a description of the project#2.',
-      images: [imageOfMe, imageOfMe, imageOfMe],
+      title: 'Dungeons & Dragons Character Creator / Stat Compiler',
+      description: 'Allows new players of Dungeons and Dragons to create and use characters with ease. Technologies used: JavaScript, HTML, CSS, Bulma, D&D API First group project, demonstrates foundational skills, a strong commitment to learning, and effective teamwork in a collaborative environment.',
+      images: [dndProj1, dndProj2, dndProj3],
     },
     {
-      src: imageOfMe,
+    //   src: imageOfMe,
       alt: 'me',
-      title: 'Project Title 3',
-      description: 'This is a description of the project#3.',
-      images: [imageOfMe, imageOfMe, imageOfMe],
+      title: 'How About That Weather',
+      description: 'App that fetches data from OpenWeatherMap API and provides current and 5 day forecasts. Technologies used: JavaScript, HTML, CSS, Bulma, OWM API Showcases proficiency in fetching and integrating APIs and utilizing local storage.',
+      images: [weather1, weather2, weather3, weather4],
+    },
+    {
+        //   src: imageOfMe,
+          alt: 'me',
+          title: 'Project 4',
+          description: 'App that fetches data from OpenWeatherMap API and provides current and 5 day forecasts. Technologies used: JavaScript, HTML, CSS, Bulma, OWM API Showcases proficiency in fetching and integrating APIs and utilizing local storage.',
+          images: [weather1, weather2, weather3, weather4],
+    },
+    {
+        //   src: imageOfMe,
+          alt: 'me',
+          title: 'Project 5',
+          description: 'App that fetches data from OpenWeatherMap API and provides current and 5 day forecasts. Technologies used: JavaScript, HTML, CSS, Bulma, OWM API Showcases proficiency in fetching and integrating APIs and utilizing local storage.',
+          images: [weather1, weather2, weather3, weather4],
+    },
+    {
+        //   src: imageOfMe,
+          alt: 'me',
+          title: 'Project 6',
+          description: 'App that fetches data from OpenWeatherMap API and provides current and 5 day forecasts. Technologies used: JavaScript, HTML, CSS, Bulma, OWM API Showcases proficiency in fetching and integrating APIs and utilizing local storage.',
+          images: [weather1, weather2, weather3, weather4],
+    },
+    {
+        //   src: imageOfMe,
+          alt: 'me',
+          title: 'Project 7',
+          description: 'App that fetches data from OpenWeatherMap API and provides current and 5 day forecasts. Technologies used: JavaScript, HTML, CSS, Bulma, OWM API Showcases proficiency in fetching and integrating APIs and utilizing local storage.',
+          images: [weather1, weather2, weather3, weather4],
     },
   ];
 
@@ -177,7 +213,7 @@ export default function Portfolio() {
       ))}
 
         <Dialog open={open} onClose={handleClose} className={classes.modalBox} maxWidth="xl" fullWidth>
-            <DialogTitle>Image Preview</DialogTitle>
+            <DialogTitle> </DialogTitle>
             <IconButton aria-label="close" 
             className={classes.closeButton} 
             onClick={handleClose} 
@@ -188,6 +224,7 @@ export default function Portfolio() {
                 '&:hover': {background: 'rgba(0, 0, 0, 0.7)'} }}>
                 <Close sx={{ fontSize: '1.5rem'}} />
             </IconButton>
+           
             <DialogContent>
               <img src={modalImage} alt="modal" className={classes.modalImage} style={{ width: '100%' }} />
             </DialogContent>
