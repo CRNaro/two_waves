@@ -26,6 +26,36 @@ import weather1 from '../../assets/images/weather1.png';
 import weather2 from '../../assets/images/weather2.png';
 import weather3 from '../../assets/images/weather3.png';
 import weather4 from '../../assets/images/weather4.png';
+import quizProj1 from '../../assets/images/quizProj1.png';
+import quizProj2 from '../../assets/images/quizProj2.png';
+import quizProj3 from '../../assets/images/quizProj3.png';
+import quizProj4 from '../../assets/images/quizProj4.png';
+import quizProj5 from '../../assets/images/quizProj5.png';
+import quizProj6 from '../../assets/images/quizProj6.png';
+import shakeitup1 from '../../assets/images/shakeitup1.png';
+import shakeitup2 from '../../assets/images/shakeitup2.png';
+import shakeitup3 from '../../assets/images/shakeitup3.png';
+import taco1 from '../../assets/images/taco1.png';
+import taco2 from '../../assets/images/taco2.png';
+import taco3 from '../../assets/images/taco3.png';
+import tipCalc1 from '../../assets/images/tipCalc1.png';
+import tipCalc2 from '../../assets/images/tipCalc2.png';
+import schedule1 from '../../assets/images/Schedule1.png';
+import schedule2 from '../../assets/images/Schedule2.png';
+import schedule3 from '../../assets/images/Schedule3.png';
+import schedule4 from '../../assets/images/Schedule4.png';
+import schedule5 from '../../assets/images/Schedule5.png';
+import mondays1 from '../../assets/images/mondays1.png';
+import mondays2 from '../../assets/images/mondays2.png';
+import mondays3 from '../../assets/images/mondays3.png';
+import mondays4 from '../../assets/images/mondays4.png';
+import heartline1 from '../../assets/images/heartline1.png';
+import heartline2 from '../../assets/images/heartline2.png';
+import heartline3 from '../../assets/images/heartline3.png';
+import heartline4 from '../../assets/images/heartline4.png';
+import heartline5 from '../../assets/images/heartline5.png';
+import heartline6 from '../../assets/images/heartline6.png';
+import heartline7 from '../../assets/images/heartline7.png';
 
 //TODO: Add a description of the projects in the portfolio.  Make it so the description
 //      changes when the image changes in the carousel.  
@@ -109,7 +139,7 @@ export default function Portfolio() {
 
   const projects = [
     {
-    //   src: booksProj1,
+    //   TODO: add different sections above and under description for tech used and links to GitHub
       alt: 'image of book website to search and save books',
       title: 'Books From Boxes',
       description: 'Search books via GoogleBooks API and save them to your account after login and verification. Technologies used React, HTML5, CSS, MongoDB, NodeJS, ExpressJS, JWT Highlights frontend skills in ReactJS and secure user authentication using JWT, with MongoDB backend to store user data. ',
@@ -130,32 +160,54 @@ export default function Portfolio() {
       images: [weather1, weather2, weather3, weather4],
     },
     {
-        //   src: imageOfMe,
+          //   src: imageOfMe,
           alt: 'me',
-          title: 'Project 4',
-          description: 'App that fetches data from OpenWeatherMap API and provides current and 5 day forecasts. Technologies used: JavaScript, HTML, CSS, Bulma, OWM API Showcases proficiency in fetching and integrating APIs and utilizing local storage.',
-          images: [weather1, weather2, weather3, weather4],
+          title: 'Lets Cook/Shake It Up',
+          description: 'Cocktail app lets the user find a new cocktail to try. Technologies used: React, MaterialUI, Django, NodeJS, ExpressJS, HTML5, CSS Built as part of a job application, marking my first project utilizing Django, demonstrating adaptability and quick learning of new frameworks.',
+          images: [shakeitup1, shakeitup2, shakeitup3], 
+    },
+    {
+        //   src: imageOfMe,
+        
+          alt: 'me',
+          title: 'Gordita Local',
+          description: 'Website that showcases birria taco company. Technologies used: React, MaterialUI, JavaScript, HTML, CSS, NodeJS Currently in development with plans to integrate live Instagram updates and Google API functionality to allow the owner to manage the calendar and schedule of events.',
+          images: [taco1, taco2, taco3],
     },
     {
         //   src: imageOfMe,
           alt: 'me',
-          title: 'Project 5',
-          description: 'App that fetches data from OpenWeatherMap API and provides current and 5 day forecasts. Technologies used: JavaScript, HTML, CSS, Bulma, OWM API Showcases proficiency in fetching and integrating APIs and utilizing local storage.',
-          images: [weather1, weather2, weather3, weather4],
+          title: 'Walkings Still Honest',
+          description: 'This project was created as a quick and easy way for restaurant staff to disbursed cash tips for the day based on hours worked and amount received. Technologies used: JavaScript, HTML, CSS, ReactJS.  Demonstrates the ability to implement core functionalities, such as calculating and distributing cash tips, based on custom business logic.',
+          images: [tipCalc1, tipCalc2],
     },
     {
         //   src: imageOfMe,
           alt: 'me',
-          title: 'Project 6',
-          description: 'App that fetches data from OpenWeatherMap API and provides current and 5 day forecasts. Technologies used: JavaScript, HTML, CSS, Bulma, OWM API Showcases proficiency in fetching and integrating APIs and utilizing local storage.',
-          images: [weather1, weather2, weather3, weather4],
+          title: 'Warm the Heart',
+          description: '.',
+          images: [heartline1, heartline2, heartline3, heartline4, heartline5, heartline6, heartline7],
     },
     {
         //   src: imageOfMe,
           alt: 'me',
-          title: 'Project 7',
-          description: 'App that fetches data from OpenWeatherMap API and provides current and 5 day forecasts. Technologies used: JavaScript, HTML, CSS, Bulma, OWM API Showcases proficiency in fetching and integrating APIs and utilizing local storage.',
-          images: [weather1, weather2, weather3, weather4],
+          title: 'Pencil Me In',
+          description: '.',
+          images: [schedule1, schedule2, schedule3, schedule4, schedule5],
+    },
+    {
+        //   src: imageOfMe,
+          alt: 'me',
+          title: 'Case of the Mondays',
+          description: '.',
+          images: [mondays1, mondays2, mondays3, mondays4],
+    },
+    {
+      //   src: imageOfMe,
+      alt: 'me',
+      title: 'Quiz Time',
+      description: 'Quiz app fully created by me.  Pulls questions created by me, score is based on time, and high scores are saved.  Technologies used: JavaScript, HTML, CSS, demonstrates proficiency in JS and local storage.',
+      images: [quizProj1, quizProj2, quizProj3, quizProj4, quizProj5, quizProj6],
     },
   ];
 
