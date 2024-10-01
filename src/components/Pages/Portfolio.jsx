@@ -8,9 +8,15 @@ import {
     IconButton, 
     Dialog, 
     DialogContent, 
-    DialogTitle } from '@mui/material';
+    DialogTitle,
+    Link,
+} from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { ArrowUpward, ArrowDownward, Close } from '@mui/icons-material';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { useInView } from 'react-intersection-observer';
 import imageOfMe from '../../assets/images/medrawingstyle.png';
 import backgroundTreeImg from '../../assets/images/trees.jpeg';
 import booksProj1 from '../../assets/images/books_boxes1.png';
@@ -56,6 +62,11 @@ import heartline4 from '../../assets/images/heartline4.png';
 import heartline5 from '../../assets/images/heartline5.png';
 import heartline6 from '../../assets/images/heartline6.png';
 import heartline7 from '../../assets/images/heartline7.png';
+import jotDown1 from '../../assets/images/jotDown1.png';
+import jotDown2 from '../../assets/images/jotDown2.png';
+import jotDown3 from '../../assets/images/jotDown3.png';
+import jotDown4 from '../../assets/images/jotDown4.png';
+import jotDown5 from '../../assets/images/jotDown5.png';
 
 //TODO: Add a description of the projects in the portfolio.  Make it so the description
 //      changes when the image changes in the carousel.  
@@ -103,10 +114,20 @@ const useStyles = makeStyles((theme) => ({
     width: '60%',
     height: '100%',
   },
+  carouselPaper: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  },
+  imageContainer: {
+    width: '100%',
+    height: '100%',
+  },
   carouselImage: {
     width: '100%',
     height: '100%',
-    objectFit: 'contain',
+    // objectFit: 'contain',
     cursor: 'pointer',
   },
   descriptionCard: {
@@ -129,41 +150,41 @@ const useStyles = makeStyles((theme) => ({
 //  },
 }));
 
-export default function Portfolio() {
-  const classes = useStyles();
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [currentImage, setCurrentImage] = useState(0);
-  const [open, setOpen] = useState(false);
-  const [modalImage, setModalImage] = useState('');
- 
-
-  const projects = [
+const projects = [
     {
     //   TODO: add different sections above and under description for tech used and links to GitHub
       alt: 'image of book website to search and save books',
       title: 'Books From Boxes',
-      description: 'Search books via GoogleBooks API and save them to your account after login and verification. Technologies used React, HTML5, CSS, MongoDB, NodeJS, ExpressJS, JWT Highlights frontend skills in ReactJS and secure user authentication using JWT, with MongoDB backend to store user data. ',
+      description: 'Search books via GoogleBooks API and save them to your account after login and verification. Highlights frontend skills in ReactJS and secure user authentication using JWT, with MongoDB backend to store user data. ',
+      technology: 'React, HTML5, CSS, MongoDB, NodeJS, ExpressJS, JWT',
+      link: 'https://github.com/CRNaro/books-from-boxes',
       images: [booksProj1, booksProj2, booksProj3, booksProj4, booksProj5, booksProj6],
     },
     {
     //   src: imageOfMe,
       alt: 'me',
       title: 'Dungeons & Dragons Character Creator / Stat Compiler',
-      description: 'Allows new players of Dungeons and Dragons to create and use characters with ease. Technologies used: JavaScript, HTML, CSS, Bulma, D&D API First group project, demonstrates foundational skills, a strong commitment to learning, and effective teamwork in a collaborative environment.',
+      description: 'Allows new players of Dungeons and Dragons to create and use characters with ease. Demonstrates foundational skills, a strong commitment to learning, and effective teamwork in a collaborative environment.',
+      technology: 'JavaScript, HTML5, CSS, Bulma, D&D API',
+      link: 'https://github.com/CRNaro/dnd-stat-compiler',
       images: [dndProj1, dndProj2, dndProj3],
     },
     {
     //   src: imageOfMe,
       alt: 'me',
       title: 'How About That Weather',
-      description: 'App that fetches data from OpenWeatherMap API and provides current and 5 day forecasts. Technologies used: JavaScript, HTML, CSS, Bulma, OWM API Showcases proficiency in fetching and integrating APIs and utilizing local storage.',
+      description: 'App that fetches data from OpenWeatherMap API and provides current and 5 day forecasts. Showcases proficiency in fetching and integrating APIs and utilizing local storage.',
+      technology: 'JavaScript, HTML5, CSS, Bulma, OWM API ',
+      link: 'https://github.com/CRNaro/how-about-that-weather-06',
       images: [weather1, weather2, weather3, weather4],
     },
     {
           //   src: imageOfMe,
           alt: 'me',
           title: 'Lets Cook/Shake It Up',
-          description: 'Cocktail app lets the user find a new cocktail to try. Technologies used: React, MaterialUI, Django, NodeJS, ExpressJS, HTML5, CSS Built as part of a job application, marking my first project utilizing Django, demonstrating adaptability and quick learning of new frameworks.',
+          description: 'Cocktail app lets the user find a new cocktail to try.  Built as part of a job application, marking my first project utilizing Django, demonstrating adaptability and quick learning of new frameworks.',
+          technology: 'React, JavaScript, MaterialUI, Python, Django, NodeJS, ExpressJS, HTML5, CSS',
+          link: 'https://github.com/CRNaro/lets-cook',
           images: [shakeitup1, shakeitup2, shakeitup3], 
     },
     {
@@ -171,21 +192,27 @@ export default function Portfolio() {
         
           alt: 'me',
           title: 'Gordita Local',
-          description: 'Website that showcases birria taco company. Technologies used: React, MaterialUI, JavaScript, HTML, CSS, NodeJS Currently in development with plans to integrate live Instagram updates and Google API functionality to allow the owner to manage the calendar and schedule of events.',
+          description: 'Website that showcases birria taco company. Currently in development with plans to integrate live Instagram updates and Google API functionality to allow the owner to manage the calendar and schedule of events.',
+          technology: 'React, MaterialUI, JavaScript, HTML5, CSS, NodeJS ',
+          link: 'https://github.com/CRNaro/gordita-local',
           images: [taco1, taco2, taco3],
     },
     {
         //   src: imageOfMe,
           alt: 'me',
           title: 'Walkings Still Honest',
-          description: 'This project was created as a quick and easy way for restaurant staff to disbursed cash tips for the day based on hours worked and amount received. Technologies used: JavaScript, HTML, CSS, ReactJS.  Demonstrates the ability to implement core functionalities, such as calculating and distributing cash tips, based on custom business logic.',
+          description: 'This project was created as a quick and easy way for restaurant staff to disbursed cash tips for the day based on hours worked and amount received. Demonstrates the ability to implement core functionalities, such as calculating and distributing cash tips, based on custom business logic.',
+          technology: 'JavaScript, React, HTML5, CSS, MaterialUI, NodeJS',
+          link: 'https://github.com/CRNaro/walkings-still-honest',
           images: [tipCalc1, tipCalc2],
     },
     {
         //   src: imageOfMe,
           alt: 'me',
           title: 'Warm the Heart',
-          description: '.',
+          description: 'This application provides the employees of Hear Line Stove shop with the ability to create and search customers in the database.  Project still in progress',
+          technology: 'JavaScript, React, HTML5, CSS, NodeJS, MongoDB, Express',
+          link: 'https://github.com/CRNaro/warm-the-heart',
           images: [heartline1, heartline2, heartline3, heartline4, heartline5, heartline6, heartline7],
     },
     {
@@ -193,31 +220,57 @@ export default function Portfolio() {
           alt: 'me',
           title: 'Pencil Me In',
           description: '.',
+          technology: 'JavaScript, HTML5, CSS',
+          link: 'https://github.com/CRNaro/pencil-me-in-05',
           images: [schedule1, schedule2, schedule3, schedule4, schedule5],
     },
     {
         //   src: imageOfMe,
           alt: 'me',
+          title: 'Jot This Down',
+          description: 'This day planner app was created to help manage my projects and daily tasks effectively. The goal is to keep track of projects, appointments, and events throughout the day, ensuring that everything is organized and completed on time. The app visually reflects time progression, providing users with a clear view of past, current, and upcoming tasks.',
+          technology: 'JavaScript, HTML5, CSS',
+          link: '',
+          images: [jotDown1, jotDown2, jotDown3, jotDown4, jotDown5],
+    },
+    {
+        //   src: imageOfMe,
+          alt: 'me',
           title: 'Case of the Mondays',
-          description: '.',
+          description: 'This project is a command-line application designed to manage a companys employee database. It serves as a simple Content Management System (CMS) that allows business owners to interact with and organize information regarding their departments, roles, and employees. Built with Node.js, the application leverages the Inquirer package for interactive prompts and MySQL for persistent data storage. It provides an intuitive interface to view and modify employee data, aiding in business planning and organization.',
+          technology: 'JavaScript, HTML5, CSS, MySQL, Node.js, Express.js',
+          link: 'https://github.com/CRNaro/case-of-the-mondays-12',
           images: [mondays1, mondays2, mondays3, mondays4],
     },
     {
       //   src: imageOfMe,
       alt: 'me',
       title: 'Quiz Time',
-      description: 'Quiz app fully created by me.  Pulls questions created by me, score is based on time, and high scores are saved.  Technologies used: JavaScript, HTML, CSS, demonstrates proficiency in JS and local storage.',
+      description: 'Quiz app fully created by me.  Pulls questions created by me, score is based on time, and high scores are saved. One of my earliest projects during class, demonstrates proficiency in JS and local storage.  ',
+      technology: 'JavaScript, HTML5, CSS',
+      link: 'https://github.com/CRNaro/quiz-time-04',
       images: [quizProj1, quizProj2, quizProj3, quizProj4, quizProj5, quizProj6],
     },
   ];
 
-  const handleNextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % projects[currentSlide].images.length);
-  };
 
-  const handlePrevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + projects[currentSlide].images.length) % projects[currentSlide].images.length);
-  };
+
+export default function Portfolio() {
+  const classes = useStyles();
+  const [currentSlide, setCurrentSlide] = useState(0);
+//   const [currentImage, setCurrentImage] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [modalImage, setModalImage] = useState('');
+ 
+
+  
+//   const handleNextImage = () => {
+//     setCurrentImage((prev) => (prev + 1) % projects[currentSlide].images.length);
+//   };
+
+//   const handlePrevImage = () => {
+//     setCurrentImage((prev) => (prev - 1 + projects[currentSlide].images.length) % projects[currentSlide].images.length);
+//   };
   const handleImageClick = (image) => {
     setModalImage(image);
     setOpen(true);
@@ -228,35 +281,51 @@ export default function Portfolio() {
 
   return (
     <Box className={classes.root}>
-    
       <Typography variant="h2" className={classes.pageTitle}>
         PORTFOLIO
       </Typography>
-    
+
       {projects.map((project, index) => (
-        
         <Card key={index} className={classes.portfolioCard} style={{ backgroundColor: 'rgba(247, 233, 186, .9)' }}>
-         <Typography variant="h5" component="div">
-                  {project.title}
-                </Typography>
+          <Typography variant="h5" component="div">
+            {project.title}
+          </Typography>
           <CardContent className={classes.carouselCard}>
             <Carousel className={classes.carousel} autoPlay={false} onChange={(i) => setCurrentSlide(i)}>
-              {project.images.map((image, i) => (
-                <Paper key={i}>
-                  <img src={image} alt={project.alt} className={classes.carouselImage} onClick={() => handleImageClick(image)} />
-                </Paper>
-              ))}
-              
+              {project.images.map((image, i) => {
+                const { ref, inView } = useInView({
+                  triggerOnce: true, // Load the image only once when it comes into view
+                  threshold: 0.1, // Trigger when 10% of the image is in view
+                });
+
+                return (
+                  <Paper key={i} className={classes.carouselPaper}>
+                    <div ref={ref} className={classes.imageContainer}>
+                      {inView && (
+                        <img 
+                          src={image} 
+                          alt={project.alt} 
+                          className={classes.carouselImage}
+                          onClick={() => handleImageClick(image)} 
+                        />
+                      )}
+                    </div>
+                  </Paper>
+                );
+              })}
             </Carousel>
             <Card className={classes.descriptionCard}>
               <CardContent>
-            
                 <Typography variant="body1" component="div">
-                  {project.description}
+                  <strong>Project Description:</strong> {project.description}
+                </Typography>
+                <Typography variant="body2" component="div" style={{ marginTop: '10px' }}>
+                  <strong>Technologies Used:</strong> {project.technology}
+                </Typography>
+                <Typography variant="body2" component="div" style={{ marginTop: '10px' }}>
+                  <Link href={project.link} target="_blank" rel="noopener"><GitHubIcon className={classes.icon}/></Link>
                 </Typography>
                 <Box position="relative">
-                 
-                 
                 </Box>
               </CardContent>
             </Card>
@@ -264,28 +333,26 @@ export default function Portfolio() {
         </Card>
       ))}
 
-        <Dialog open={open} onClose={handleClose} className={classes.modalBox} maxWidth="xl" fullWidth>
-            <DialogTitle> </DialogTitle>
-            <IconButton aria-label="close" 
-            className={classes.closeButton} 
-            onClick={handleClose} 
-            sx={{ 
-                padding: '10px',
-                width: '50px',
-                left: '45%',
-                '&:hover': {background: 'rgba(0, 0, 0, 0.7)'} }}>
-                <Close sx={{ fontSize: '1.5rem'}} />
-            </IconButton>
-           
-            <DialogContent>
-              <img src={modalImage} alt="modal" className={classes.modalImage} style={{ width: '100%' }} />
-            </DialogContent>
-            </Dialog>
-
+      <Dialog open={open} onClose={handleClose} className={classes.modalBox} maxWidth="xl" fullWidth>
+        <DialogTitle> </DialogTitle>
+        <IconButton aria-label="close" 
+          className={classes.closeButton} 
+          onClick={handleClose} 
+          sx={{ 
+            padding: '10px',
+            width: '50px',
+            left: '45%',
+            '&:hover': {background: 'rgba(0, 0, 0, 0.7)'} 
+          }}>
+          <Close sx={{ fontSize: '1.5rem'}} />
+        </IconButton>
+        <DialogContent>
+          <img src={modalImage} alt="modal" className={classes.modalImage} style={{ width: '100%' }} />
+        </DialogContent>
+      </Dialog>
     </Box>
   );
 }
-
 
 
 

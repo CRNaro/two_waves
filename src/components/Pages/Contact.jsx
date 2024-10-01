@@ -8,6 +8,7 @@ import backgroundTreeImg from "../../assets/images/trees.jpeg";
 import imageOfMe from "../../assets/images/medrawingstyle.png";
 import NavCard from "../Header/NavCard";
 import "../../styles/AboutMe.css";
+import { color } from '@mui/system';
 
 //TODO: Get the form working properly.  It is not sending the email.
 //TODO: Make form clear after user submits.
@@ -50,13 +51,24 @@ const useStyles = makeStyles((theme) => ({
           textAlign: 'left',
         //   color: 'white',
         },
-       
+       thankYouCard: {
+        backgroundColor: 'rgba(247, 233, 186, .9) !important',
+        color: '#7EBDC2 !important',
+        justifyContent: 'space-between !important',
+        textAlign: 'center !important',
+        width: 'auto !important',
+        marginRight: '25%',
+        marginTop: '25%',
+        marginBottom: '25%',
+        top: '25%',
+        boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
+       },
       
       }));
 
 export default function Contact() {
         const classes = useStyles();
-            const [state, handleSubmit] = useForm("mqkrlavd");
+            const [state, handleSubmit] = useForm("xgvwgppw");
     const [nameTouched, setNameTouched] = useState(false);
     const [emailTouched, setEmailTouched] = useState(false);
     const [messageTouched, setMessageTouched] = useState(false);
@@ -65,25 +77,45 @@ export default function Contact() {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
   
-    if (state.succeeded) {
-        return <p>Thank you for contacting me.  I will respond as soon as possible.</p>;
-    }
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        await handleSubmit(e);
+        if (state.succeeded) {
+            setName('');
+            setEmail('');
+            setMessage('');
+            setNameTouched(false);
+            setEmailTouched(false);
+            setMessageTouched(false);
+        }
+  }; 
+
 return (
         <Box className={classes.root}>
-                <Typography variant="h2" style={{ color: 'white'}}>
+                <Typography variant="h2" style={{ color: 'white' }}>
                         CONTACT ME
                         </Typography>
+                        {state.succeeded ?(
+                          <Card className={classes.thankYouCard}>
+                        <h1>
+                          THANK YOU!! 
+                          </h1>
+                          <Typography variant="h5" style={{ color: '#231F20'}}>
+                           I will respond as soon as possible.
+                          </Typography>
+                          </Card>
+                          ) : (
         <Card className={classes.aboutCard} style={{ backgroundColor: 'rgba(247, 233, 186, .9)'}}>
         <CardContent className={classes.styledCardContent}>
             
      
-             {/* <Typography variant="h4">Please Contact Me</Typography> */}
-           <form onSubmit={handleSubmit}>
+           <form onSubmit={handleFormSubmit} action="https://formspree.io/f/xgvwgppw" method="POST">
               <TextField
                label="Your Name"
                variant="outlined"
                fullWidth
                margin="normal"
+               name="name"
                error={nameTouched && name === ""}
                helperText={nameTouched && name === "" ? "Field required" : ""}
                onChange={e => setName(e.target.value)}
@@ -94,6 +126,8 @@ return (
                variant="outlined"
                fullWidth
                margin="normal"
+                name="email"
+                type="email"
                error={emailTouched && email === ""}
                helperText={emailTouched && email === "" ? "Field required" : ""}
                onChange={e => setEmail(e.target.value)}
@@ -111,6 +145,8 @@ return (
                multiline
                rows={4}
                margin="normal"
+                name="message"
+                value={message}
                error={messageTouched && message === ""}
                helperText={messageTouched && message === "" ? "Field required" : ""}
                onChange={e => setMessage(e.target.value)}
@@ -134,6 +170,7 @@ return (
         
   </CardContent>
         </Card>
+        )}
         </Box>
 )
 }
