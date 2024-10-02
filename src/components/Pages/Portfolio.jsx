@@ -46,10 +46,10 @@ import taco3 from '../../assets/images/taco3.png';
 import tipCalc1 from '../../assets/images/tipCalc1.png';
 import tipCalc2 from '../../assets/images/tipCalc2.png';
 // import schedule1 from '../../assets/images/Schedule1.png'; 
-import schedule2 from '../../assets/images/Schedule2.png';
-import schedule3 from '../../assets/images/Schedule3.png';
-import schedule4 from '../../assets/images/Schedule4.png';
-import schedule5 from '../../assets/images/Schedule5.png';
+// import schedule2 from '../../assets/images/Schedule2.png';
+// import schedule3 from '../../assets/images/Schedule3.png';
+// import schedule4 from '../../assets/images/Schedule4.png';
+// import schedule5 from '../../assets/images/Schedule5.png';
 import mondays1 from '../../assets/images/mondays1.png';
 import mondays2 from '../../assets/images/mondays2.png';
 import mondays3 from '../../assets/images/mondays3.png';
@@ -221,7 +221,7 @@ const projects = [
           description: '.',
           technology: 'JavaScript, HTML5, CSS',
           link: 'https://github.com/CRNaro/pencil-me-in-05',
-          images: [schedule2, schedule3, schedule4, schedule5],
+          images: [],
     },
     {
         //   src: imageOfMe,
