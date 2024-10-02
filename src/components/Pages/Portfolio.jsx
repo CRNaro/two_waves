@@ -17,7 +17,6 @@ import { ArrowUpward, ArrowDownward, Close } from '@mui/icons-material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { useInView } from 'react-intersection-observer';
-import imageOfMe from '../../assets/images/medrawingstyle.png';
 import backgroundTreeImg from '../../assets/images/trees.jpeg';
 import booksProj1 from '../../assets/images/books_boxes1.png';
 import booksProj2 from '../../assets/images/books_boxes2.png';
