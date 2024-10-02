@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
   portfolioCard: {
     backgroundColor: 'rgba(247, 233, 186, 1)',
     width: '90%',
-    height: 'auto',
+    height: '100%',
     marginTop: '80px',
     marginBottom: '20px',
     boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
@@ -118,6 +118,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
+    width: '100%',
   },
   imageContainer: {
     width: '100%',
@@ -130,7 +131,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
   },
   descriptionCard: {
-    width: '32%',
+    width: '50%',
     margin: '8px',
     backgroundColor: 'black !important',
     color: '#FFFFF0 !important',
@@ -290,6 +291,21 @@ export default function Portfolio() {
             {project.title}
           </Typography>
           <CardContent className={classes.carouselCard}>
+          <Card className={classes.descriptionCard}>
+            <CardContent>
+              <Typography variant="body1" component="div">
+                <strong>Project Description:</strong> {project.description}
+              </Typography>
+              <Typography variant="body2" component="div" style={{ marginTop: '10px' }}>
+                <strong>Technologies Used:</strong> {project.technology}
+              </Typography>
+              <Typography variant="body2" component="div" style={{ marginTop: '10px' }}>
+                <Link href={project.link} target="_blank" rel="noopener"><GitHubIcon className={classes.icon}/></Link>
+              </Typography>
+              <Box position="relative">
+              </Box>
+            </CardContent>
+          </Card>
             <Carousel className={classes.carousel} autoPlay={false} onChange={(i) => setCurrentSlide(i)}>
               {project.images.map((image, i) => {
                 const { ref, inView } = useInView({
@@ -313,7 +329,7 @@ export default function Portfolio() {
                 );
               })}
             </Carousel>
-            <Card className={classes.descriptionCard}>
+            {/* <Card className={classes.descriptionCard}>
               <CardContent>
                 <Typography variant="body1" component="div">
                   <strong>Project Description:</strong> {project.description}
@@ -327,7 +343,7 @@ export default function Portfolio() {
                 <Box position="relative">
                 </Box>
               </CardContent>
-            </Card>
+            </Card> */}
           </CardContent>
         </Card>
       ))}
