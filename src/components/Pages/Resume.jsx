@@ -11,7 +11,11 @@ import Grid from "@mui/material/Grid";
 import backgroundTreeImg from "../../assets/images/trees.jpeg";
 import NavCard from "../Header/NavCard";
 import "../../styles/AboutMe.css";
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Modal } from "@mui/material";
+import { Balance } from "@mui/icons-material";
+import { Document, Page, pdfjs } from 'react-pdf';
+import workerSrc from 'pdfjs-dist/build/pdf.worker.min.js'
+// import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
 import html5Logo from "../../assets/images/html5Logo.png";
 import cssLogo from "../../assets/images/cssLogo.png";
 import JavascriptLogo from "../../assets/images/javascriptLogo.png";
@@ -24,9 +28,13 @@ import mysqlLogo from "../../assets/images/mysqlLogo.png";
 import mongodbLogo from "../../assets/images/mongodbLogo.png";
 import djangoLogo from "../../assets/images/djangoLogo.png";
 import phpLogo from "../../assets/images/phpLogo.png";
+import resumePDF from "../../assets/pdf/resume.pdf"
+import { width } from "@mui/system";
 
+pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
+// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
-//TODO: Set up and use SVG images for the logos to make them scalable. 
+//TODO: Set up and use SVG images for the logos to make them scalable.
 
 const useStyles = makeStyles((theme) => ({
   mainContent: {
@@ -42,33 +50,31 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${backgroundTreeImg})`,
     boxShadow: "10px 5px 10px 5px rgba(0, 0, 0, .25)",
   },
-  proficienciesCard: {
-    backgroundColor: 'rgba(247, 233, 186, .9)',
-    width: 'auto',
-    height: 'auto',
-    boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
-    zIndex: 2,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: '30px',
+  styledCardContent: {
+    width: "100%",
+    height: "auto",
+    backgroundColor: "rgba(247, 233, 186, .1)",
+    // marginBottom: "40px",
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap",
+    // justifyContent: "center",
   },
-    aboutCard: {
-        backgroundColor: 'rgba(247, 233, 186, .1) !important',
-        margin: '2%',
-    },
-    styledCardContent: {
-        width: "100%",
-        height: "1000vh",
-        backgroundColor: 'rgba(247, 233, 186, .1)',
-        // marginLeft: "40px",
-        display: "flex",
-        flexDirection: "column",
-        flexWrap: "wrap",
-        // justifyContent: "center",
-        
-    },
-    styledTypography: {
+  proficienciesCard: {
+    backgroundColor: "rgba(247, 233, 186, .9)",
+    width: "auto",
+    height: "auto",
+    boxShadow: "10px 5px 10px 5px rgba(0, 0, 0, .25)",
+    marginTop: "100px",
+    marginBottom: "40px",
+    zIndex: 2,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "30px",
+    transform: "translateX(-20%)",
+  },
+  styledTypography: {
     //   position: 'absolute',
     // left: "13%",
     // top: "10%",
@@ -77,13 +83,50 @@ const useStyles = makeStyles((theme) => ({
     // textAlign: "left",
     //   color: 'white',
   },
+  aboutCard: {
+    backgroundColor: "rgba(247, 233, 186, .1) !important",
+    margin: "2%",
+  },
   logo: {
     width: "auto",
     height: "auto",
   },
-//   expandedContent: {
-//     marginTop: "10px",
-//   },
+  //   expandedContent: {
+  //     marginTop: "10px",
+  //   },
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "fixed",
+  },
+  modalContent: {
+    backgroundColor: "rgba(247, 233, 186, 1) !important",
+    padding: theme.spacing(2, 4, 3),
+    boxShadow: theme.shadows[5],
+    outline: "none",
+    width: "25%",
+  },
+  modalLogo: {
+    width: "100px",
+    height: "100px",
+    marginBottom: theme.spacing(2),
+    objectFit: "contain !important",
+    objectPosition: "center !important",
+  },
+  pdfContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "auto",
+  },
+  downloadLink: {
+    display: "flex",
+    marginTop: theme.spacing(2),
+    textDecoration: "none", 
+    color: theme.palette.primary.main,
+  },
 }));
 
 const frontEndProficiencies = [
@@ -125,129 +168,235 @@ const frontEndProficiencies = [
   },
   // Add other proficiencies here...
 ];
-const backEndProficiencies = [  
-    {
-        name: "Node.js",
-        logo: nodejsLogo1,
-        description:
-          "",
-      },
-      {
-        name: "Express.js",
-        logo: expressLogo,
-        description:
-          "",
-      },  
-       {
-        name: "MySQL",
-        logo: mysqlLogo,
-        description:
-          "",
-      },
-      {
-        name: "MongoDB/NoSQL",
-        logo: mongodbLogo,
-        description:
-          "",
-      },
-      {
-        name: "Django",
-        logo: djangoLogo,
-        description:
-          "",
-      },
-      {
-        name: "PHP",
-        logo: phpLogo,
-        description:
-          "",
-      },
+const backEndProficiencies = [
+  {
+    name: "Node.js",
+    logo: nodejsLogo1,
+    description:
+      "Proficient in Node.js for building scalable, event-driven applications. Experienced in handling asynchronous operations and utilizing the rich ecosystem of npm packages for full-stack JavaScript development.",
+  },
+  {
+    name: "Express.js",
+    logo: expressLogo,
+    description:
+      "Skilled in using Express.js to create RESTful APIs and manage server-side routing. Proficient in middleware integration for handling authentication, logging, and error management in web applications.",
+  },
+  {
+    name: "MySQL",
+    logo: mysqlLogo,
+    description:
+      "Experienced in working with MySQL for database management, including writing complex SQL queries, creating efficient schema designs, and ensuring data integrity through normalization and indexing.",
+  },
+  {
+    name: "MongoDB /NoSQL",
+    logo: mongodbLogo,
+    description:
+      "Proficient in MongoDB for building NoSQL databases, handling large datasets, and working with document-oriented storage. Skilled in designing flexible schemas and using aggregation pipelines for data processing.",
+  },
+  {
+    name: "Django",
+    logo: djangoLogo,
+    description:
+      "New to using Django but quickly learning to develop secure, scalable, and high-performance web applications. Proficient in Django's ORM, templating engine, and built-in admin panel for rapid application development.",
+  },
+  {
+    name: "PHP",
+    logo: phpLogo,
+    description:
+      "Currently still learning PHP for server-side scripting, creating dynamic websites and applications. Skilled in integrating PHP with MySQL databases, managing session data, and building secure, efficient web solutions.",
+  },
 ];
 
 export default function Resume() {
-    const classes = useStyles();
-    const [expanded, setExpanded] = useState(null);
-  
-    const handleExpandClick = (index) => {
-      setExpanded(expanded === index ? null : index);
-    };
-  
-    return (
-        <Box className={classes.root}>
-          <Typography variant="h2" style={{ color: 'white' }}>
-            RESUME
-          </Typography>
-          <Card className={classes.proficienciesCard} style={{ backgroundColor: 'rgba(247, 233, 186, .9)' }}>
-            <CardContent className={classes.styledCardContent}>
-              <div className={classes.styledTypography}>
-                <Typography variant="h4">
-                  Front End Proficiencies
-                </Typography>
-                <Stack spacing={3} direction="row" flexWrap="wrap" justifyContent="center">
-                  {frontEndProficiencies.map((frontEndProficiencies, index) => (
-                    <Box key={index} width={{ xs: '100%', sm: '45%', md: '30%' }} mb={3}>
-                      <Card className={classes.aboutCard}>
-                        {/* <CardActionArea onClick={() => handleExpandClick(index)}> */}
-                          <CardMedia
-                            component="img"
-                            alt={frontEndProficiencies.name}
-                            height="140"
-                            image={frontEndProficiencies.logo}
-                            title={frontEndProficiencies.name}
-                            className={classes.logo}
-                          />
-                          <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                              {frontEndProficiencies.name}
-                            </Typography>
-                            {/* {expanded === index && ( */}
+  const classes = useStyles();
+  const [expanded, setExpanded] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = (index) => {
+    setExpanded(index);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setExpanded(null);
+  };
+
+  const handleExpandClick = (index) => {
+    setExpanded(expanded === index ? null : index);
+  };
+
+  return (
+    <Box className={classes.root}>
+      <Typography variant="h2" style={{ color: "white" }}>
+        RESUME
+      </Typography>
+      <Card
+        className={classes.proficienciesCard}
+        style={{ backgroundColor: "rgba(247, 233, 186, .9)" }}
+      >
+        <CardContent className={classes.styledCardContent}>
+          <Card>
+            <CardContent>
+                <CardMedia className={classes.pdfContainer}>
+                    <Document file={resumePDF}>
+                        <Page pageNumber={1} />
+                    </Document>
+                </CardMedia>
+                <a href={resumePDF} download className={classes.downloadLink}>
+                    <Button variant="contained" color="primary">
+                        Download My Resume
+                    </Button>
+                </a>
+            </CardContent>
+          </Card>
+          <div className={classes.styledTypography}>
+            <Typography variant="h4">Front End Proficiencies</Typography>
+            <Stack
+              spacing={3}
+              direction="row"
+              flexWrap="wrap"
+              justifyContent="center"
+            >
+              {frontEndProficiencies.map((frontEndProficiencies, index) => (
+                <Box
+                  key={index}
+                  width={{ xs: "100%", sm: "45%", md: "29%" }}
+                  mb={3}
+                >
+                  <Card className={classes.aboutCard}>
+                    <CardActionArea onClick={() => handleOpen(index)}>
+                      <CardMedia
+                        component="img"
+                        alt={frontEndProficiencies.name}
+                        image={frontEndProficiencies.logo}
+                        // title={frontEndProficiencies.name}
+                        className={classes.logo}
+                      />
+                      <CardContent>
+                        <Typography
+                          gutterBottom
+                          variant="h5"
+                          component="div"
+                          style={{ textWrap: Balance }}
+                        >
+                          {frontEndProficiencies.name}
+                        </Typography>
+                        {/* {expanded === index && (
                               <Typography variant="body2" color="textSecondary" component="p" className={classes.expandedContent}>
                                 {frontEndProficiencies.description}
                               </Typography>
-                            {/*  )} */}
-                          </CardContent>
-                        {/* </CardActionArea> */}
-                      </Card>
-                    </Box>
-                  ))}
-                </Stack>
-                <Typography variant="h4">
-                  Back End Proficiencies
-                </Typography>
-                <Stack spacing={3} direction="row" flexWrap="wrap" justifyContent="center">
-                  {backEndProficiencies.map((backEndProficiencies, index) => (
-                    <Box key={index} width={{ xs: '100%', sm: '45%', md: '30%' }} mb={3}>
-                      <Card className={classes.aboutCard}>
-                        {/* <CardActionArea onClick={() => handleExpandClick(index)}> */}
-                          <CardMedia
-                            component="img"
-                            alt={backEndProficiencies.name}
-                            height="140"
-                            image={backEndProficiencies.logo}
-                            title={backEndProficiencies.name}
-                            className={classes.logo}
-                          />
-                          <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                              {backEndProficiencies.name}
-                            </Typography>
-                            {/* {expanded === index && ( */}
-                              <Typography variant="body2" color="textSecondary" component="p" className={classes.expandedContent}>
-                                {backEndProficiencies.description}
-                              </Typography>
-                            {/*  )} */}
-                          </CardContent>
-                        {/* </CardActionArea> */}
-                      </Card>
-                    </Box>
-                  ))}
-                </Stack>
-              </div>
-            </CardContent>
-          </Card>
-        </Box>
-      );
-    }
+                              )}  */}
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Box>
+              ))}
+            </Stack>
+            <Modal open={open} onClose={handleClose} className={classes.modal}>
+              <Box className={classes.modalContent}>
+                {expanded !== null && (
+                  <>
+                    <CardMedia
+                      component="img"
+                      alt={frontEndProficiencies[expanded].name}
+                      image={frontEndProficiencies[expanded].logo}
+                      title={frontEndProficiencies.name}
+                      className={classes.modalLogo}
+                    />
+                    <Typography variant="h5" component="div">
+                      {frontEndProficiencies[expanded].name}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {frontEndProficiencies[expanded].description}
+                    </Typography>
+                  </>
+                )}
+              </Box>
+            </Modal>
+            <Typography variant="h4">Back End Proficiencies</Typography>
+            <Stack
+              spacing={3}
+              direction="row"
+              flexWrap="wrap"
+              justifyContent="center"
+            >
+              {backEndProficiencies.map((backEndProficiencies, index) => (
+                <Box
+                  key={index}
+                  width={{ xs: "100%", sm: "45%", md: "30%" }}
+                  mb={3}
+                >
+                  <Card className={classes.aboutCard}>
+                    <CardActionArea onClick={() => handleOpen(index)}>
+                      <CardMedia
+                        component="img"
+                        alt={backEndProficiencies.name}
+                        height="140"
+                        image={backEndProficiencies.logo}
+                        title={backEndProficiencies.name}
+                        className={classes.logo}
+                      />
+                      <CardContent>
+                        <Typography
+                          gutterBottom
+                          variant="h5"
+                          component="div"
+                          style={{ textWrap: Balance }}
+                        >
+                          {backEndProficiencies.name}
+                        </Typography>
+                        {/* {expanded === index && (
+                          <Typography
+                            variant="body2"
+                            color="textSecondary"
+                            component="p"
+                            className={classes.expandedContent}
+                          >
+                            {backEndProficiencies.description}
+                          </Typography>
+                        )} */}
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Box>
+              ))}
+            </Stack>
+            <Modal open={open} onClose={handleClose} className={classes.modal}>
+              <Box className={classes.modalContent}>
+                {expanded !== null && (
+                  <>
+                    <CardMedia
+                      component="img"
+                      alt={backEndProficiencies[expanded].name}
+                      image={backEndProficiencies[expanded].logo}
+                      title={backEndProficiencies.name}
+                      className={classes.modalLogo}
+                    />
+                    <Typography variant="h5" component="div">
+                      {backEndProficiencies[expanded].name}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {backEndProficiencies[expanded].description}
+                    </Typography>
+                  </>
+                )}
+              </Box>
+            </Modal>
+          </div>
+        </CardContent>
+      </Card>
+    </Box>
+  );
+}
 
 // import styled from '@emotion/styled';
 // import React from "react";
