@@ -13,9 +13,6 @@ import NavCard from "../Header/NavCard";
 import "../../styles/AboutMe.css";
 import { Box, Stack, Modal } from "@mui/material";
 import { Balance } from "@mui/icons-material";
-import { Document, Page, pdfjs } from 'react-pdf';
-import workerSrc from 'pdfjs-dist/build/pdf.worker.min.js'
-// import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
 import html5Logo from "../../assets/images/html5Logo.png";
 import cssLogo from "../../assets/images/cssLogo.png";
 import JavascriptLogo from "../../assets/images/javascriptLogo.png";
@@ -28,11 +25,9 @@ import mysqlLogo from "../../assets/images/mysqlLogo.png";
 import mongodbLogo from "../../assets/images/mongodbLogo.png";
 import djangoLogo from "../../assets/images/djangoLogo.png";
 import phpLogo from "../../assets/images/phpLogo.png";
-import resumePDF from "../../assets/pdf/resume.pdf"
-import { width } from "@mui/system";
+import resumePDF from "../../assets/pdf/resume.pdf";
+import { height, width } from "@mui/system";
 
-pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
-// pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 //TODO: Set up and use SVG images for the logos to make them scalable.
 
@@ -119,13 +114,17 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    height: "auto",
+    height: "660px",
+    flexGrow: 1,
   },
   downloadLink: {
     display: "flex",
     marginTop: theme.spacing(2),
-    textDecoration: "none", 
+    textDecoration: "none",
     color: theme.palette.primary.main,
+  },
+  resumeCardContent: {
+    height: "100%",
   },
 }));
 
@@ -211,6 +210,11 @@ export default function Resume() {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(null);
   const [open, setOpen] = useState(false);
+  const [showResume, setShowResume] = useState(false);
+
+  const handleShowResume = () => {
+    setShowResume(!showResume);
+  };
 
   const handleOpen = (index) => {
     setExpanded(index);
@@ -235,21 +239,45 @@ export default function Resume() {
         className={classes.proficienciesCard}
         style={{ backgroundColor: "rgba(247, 233, 186, .9)" }}
       >
-        <CardContent className={classes.styledCardContent}>
-          <Card>
-            <CardContent>
-                <CardMedia className={classes.pdfContainer}>
-                    <Document file={resumePDF}>
-                        <Page pageNumber={1} />
-                    </Document>
-                </CardMedia>
-                <a href={resumePDF} download className={classes.downloadLink}>
-                    <Button variant="contained" color="primary">
-                        Download My Resume
-                    </Button>
-                </a>
-            </CardContent>
-          </Card>
+        <CardContent className={classes.resumeCardContent}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              const link = document.createElement("a");
+              link.href = resumePDF;
+              link.download = "resume.pdf";
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }}
+          >
+            Download My Resume
+          </Button>
+
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleShowResume}
+          >
+            {showResume ? "Hide Resume" : "Show Resume"}
+          </Button>
+          {showResume && (
+            <Card>
+              <CardContent>
+                <CardMedia
+                  className={classes.pdfContainer}
+                  component="iframe"
+                  src={resumePDF}
+                  width="100%"
+                  height="auto"
+                  style={{ border: "none" }}
+                  title="Resume PDF"
+                />
+              </CardContent>
+            </Card>
+          )}
+
           <div className={classes.styledTypography}>
             <Typography variant="h4">Front End Proficiencies</Typography>
             <Stack
