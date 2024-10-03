@@ -45,11 +45,12 @@ import taco2 from '../../assets/images/taco2.png';
 import taco3 from '../../assets/images/taco3.png';
 import tipCalc1 from '../../assets/images/tipCalc1.png';
 import tipCalc2 from '../../assets/images/tipCalc2.png';
-// import schedule1 from '../../assets/images/Schedule1.png'; 
-// import schedule2 from '../../assets/images/Schedule2.png';
-// import schedule3 from '../../assets/images/Schedule3.png';
-// import schedule4 from '../../assets/images/Schedule4.png';
-// import schedule5 from '../../assets/images/Schedule5.png';
+import scheduler1 from '../../assets/images/Scheduler1.png'; 
+import scheduler2 from '../../assets/images/Scheduler2.png';
+import scheduler3 from '../../assets/images/Scheduler3.png';
+import scheduler4 from '../../assets/images/Scheduler4.png';
+import scheduler5 from '../../assets/images/Scheduler5.png';
+import scheduler6 from '../../assets/images/Scheduler6.png';
 import mondays1 from '../../assets/images/mondays1.png';
 import mondays2 from '../../assets/images/mondays2.png';
 import mondays3 from '../../assets/images/mondays3.png';
@@ -224,7 +225,7 @@ const projects = [
           description: 'An interactive day planner designed to help you stay organized and keep track of your daily projects and events. As someone who frequently juggles multiple tasks, I built this tool to streamline scheduling and ensure I complete everything before the day ends. With an intuitive design, this app visually tracks time, providing a clear overview of your tasks throughout the day.',
           technology: 'JavaScript, HTML5, CSS',
           link: 'https://github.com/CRNaro/pencil-me-in-05',
-          images: [],
+          images: [scheduler1, scheduler2, scheduler3, scheduler4, scheduler5, scheduler6],
     },
     {
         //   src: imageOfMe,

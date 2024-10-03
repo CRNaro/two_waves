@@ -63,7 +63,7 @@ const Carousel = ({ images, alt, onImageClick }) => {
           setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
           setNextImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
           setFade(false);
-        }, 500);
+        }, 100);
       };
 
       const previousPhoto = () => {
@@ -72,7 +72,7 @@ const Carousel = ({ images, alt, onImageClick }) => {
           setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
           setNextImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
           setFade(false);
-        }, 500); 
+        }, 100); 
       };
     return (
         <Paper className={classes.carouselContainer}>
