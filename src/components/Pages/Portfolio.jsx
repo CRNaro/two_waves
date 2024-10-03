@@ -164,7 +164,6 @@ const projects = [
       images: [booksProj1, booksProj2, booksProj3, booksProj4, booksProj5, booksProj6],
     },
     {
-    //   src: imageOfMe,
       alt: 'me',
       title: 'Dungeons & Dragons Character Creator / Stat Compiler',
       description: 'Allows new players of Dungeons and Dragons to create and use characters with ease. Demonstrates foundational skills, a strong commitment to learning, and effective teamwork in a collaborative environment.',
@@ -173,7 +172,6 @@ const projects = [
       images: [dndProj1, dndProj2, dndProj3],
     },
     {
-    //   src: imageOfMe,
       alt: 'me',
       title: 'How About That Weather',
       description: 'App that fetches data from OpenWeatherMap API and provides current and 5 day forecasts. Showcases proficiency in fetching and integrating APIs and utilizing local storage.',
@@ -182,7 +180,6 @@ const projects = [
       images: [weather1, weather2, weather3, weather4],
     },
     {
-          //   src: imageOfMe,
           alt: 'me',
           title: 'Lets Cook/Shake It Up',
           description: 'Cocktail app lets the user find a new cocktail to try.  Built as part of a job application, marking my first project utilizing Django, demonstrating adaptability and quick learning of new frameworks.',
@@ -191,7 +188,6 @@ const projects = [
           images: [shakeitup1, shakeitup2, shakeitup3], 
     },
     {
-        //   src: imageOfMe,
         
           alt: 'me',
           title: 'Gordita Local',
@@ -201,7 +197,6 @@ const projects = [
           images: [taco1, taco2, taco3],
     },
     {
-        //   src: imageOfMe,
           alt: 'me',
           title: 'Walkings Still Honest',
           description: 'This project was created as a quick and easy way for restaurant staff to disbursed cash tips for the day based on hours worked and amount received. Demonstrates the ability to implement core functionalities, such as calculating and distributing cash tips, based on custom business logic.',
@@ -210,7 +205,6 @@ const projects = [
           images: [tipCalc1, tipCalc2],
     },
     {
-        //   src: imageOfMe,
           alt: 'me',
           title: 'Warm the Heart',
           description: 'This application provides the employees of Hear Line Stove shop with the ability to create and search customers in the database.  Project still in progress',
@@ -219,7 +213,6 @@ const projects = [
           images: [heartline1, heartline2, heartline3, heartline4, heartline5, heartline6, heartline7],
     },
     {
-        //   src: imageOfMe,
           alt: 'me',
           title: 'Pencil Me In',
           description: 'An interactive day planner designed to help you stay organized and keep track of your daily projects and events. As someone who frequently juggles multiple tasks, I built this tool to streamline scheduling and ensure I complete everything before the day ends. With an intuitive design, this app visually tracks time, providing a clear overview of your tasks throughout the day.',
@@ -228,7 +221,6 @@ const projects = [
           images: [scheduler1, scheduler2, scheduler3, scheduler4, scheduler5, scheduler6],
     },
     {
-        //   src: imageOfMe,
           alt: 'me',
           title: 'Jot This Down',
           description: 'This note taker app was created to help manage my projects and daily tasks effectively. The goal is to keep track of project notes and ideas in one place, ensuring I never lose important information. With a simple and clean interface, this app allows me to jot down notes quickly and efficiently, keeping my thoughts organized and accessible.',
@@ -237,7 +229,6 @@ const projects = [
           images: [jotDown1, jotDown2, jotDown3, jotDown4, jotDown5],
     },
     {
-        //   src: imageOfMe,
           alt: 'me',
           title: 'Case of the Mondays',
           description: 'This project is a command-line application designed to manage a companys employee database. It serves as a simple Content Management System (CMS) that allows business owners to interact with and organize information regarding their departments, roles, and employees. Built with Node.js, the application leverages the Inquirer package for interactive prompts and MySQL for persistent data storage. It provides an intuitive interface to view and modify employee data, aiding in business planning and organization.',
@@ -246,7 +237,6 @@ const projects = [
           images: [mondays1, mondays2, mondays3, mondays4],
     },
     {
-      //   src: imageOfMe,
       alt: 'me',
       title: 'Quiz Time',
       description: 'Quiz app fully created by me.  Pulls questions created by me, score is based on time, and high scores are saved. One of my earliest projects during class, demonstrates proficiency in JS and local storage.  ',

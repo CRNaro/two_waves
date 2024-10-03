@@ -1,18 +1,7 @@
 import styled from '@emotion/styled';
-import React from "react";
-import { useState, useEffect } from 'react'
-import Card from "@mui/material/Card";
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import NavDrawer from '../Header/NavDrawer'
+import React, { useState, useEffect } from 'react';
+import NavDrawer from '../Header/NavDrawer';
 
-
-//color scheme Tiki style:  Linen = #EFE6DD, Vanilla = #F3DFA2, Verdigris = #7EBDC2, 
-//                          Persian Red = #BB4430, Raisin Black = #231F20 
 const StyledHeader = styled.div`
     position: fixed;
     background-color: rgba(173, 216, 230, );
@@ -28,14 +17,8 @@ const StyledHeader = styled.div`
     transition: background-color 0.5s ease;
     flex-direction: ${props => props.shrink ? 'column' : 'row'};
     opacity: ${props => props.shrink ? 1 : props.transparent ? 0.4 : 1};
-  `;
-  //
-// const StyledH1 = styled.h1`
-//     opacity:  ${props => props.shrink ? (1 - props.scrollPosition) : (1 - props.scrollPosition)};
-//     transition: opacity 10s ease;
-//     writing-mode: ${props => props.shrink ? 'vertical-rl' : 'horizontal-tb'};
-//     text-orientation: upright;
-//     `;
+`;
+
 const StyledH1Top = styled.h1`
     opacity: ${props => 1 - props.scrollPosition};
     writing-mode: horizontal-tb;
@@ -44,7 +27,7 @@ const StyledH1Top = styled.h1`
 `;
 
 const StyledH1Left = styled.h1`
-    opacity: ${props =>  props.scrollPosition};
+    opacity: ${props => props.scrollPosition};
     writing-mode: ${props => props.windowWidth <= 600 || props.shrink ? 'vertical-rl' : 'horizontal-tb'};
     text-orientation: upright;
 
@@ -55,18 +38,19 @@ const StyledH1Left = styled.h1`
 `;
 
 const StyledLetter = styled.div`
-display:  ${props =>  props.shrink ? 'block' : 'inline-block'};
-transform: ${props => props.shrink ? 'rotate(90deg)' : 'none'};
-margin: ${props => props.shrink ? '0 0 -2px 0' : '0 10px 0 0'};
+    display: ${props => props.shrink ? 'block' : 'inline-block'};
+    transform: ${props => props.shrink ? 'rotate(90deg)' : 'none'};
+    margin: ${props => props.shrink ? '0 0 -2px 0' : '0 10px 0 0'};
 
-@media (max-width: 600px) {
-    font-size: 1rem;
-}
-    `
+    @media (max-width: 600px) {
+        font-size: 1rem;
+    }
+`;
+
 const StyledNavDrawer = styled(NavDrawer)`
-  position: fixed;
-  top: 8%; // Adjust this value as needed
-  right: 5%; // Adjust this value as needed
+    position: fixed;
+    top: 8%; // Adjust this value as needed
+    right: 5%; // Adjust this value as needed
 `;
 
 export default function NameHeader() {
@@ -74,7 +58,7 @@ export default function NameHeader() {
     const [shrink, setShrink] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    
+
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
@@ -86,7 +70,6 @@ export default function NameHeader() {
         };
     }, []);
 
-
     const text = "Christopher R. Naro".split("").map((word, index) => (
         <StyledLetter shrink={shrink} key={index}>{word}</StyledLetter>
     ));
@@ -94,39 +77,32 @@ export default function NameHeader() {
     const handleScroll = () => {
         const offset = window.scrollY;
         const maxScroll = document.body.scrollHeight - window.innerHeight;
-        if (offset > 50){
+        if (offset > 50) {
             setTransparent(true);
             setShrink(true);
-        }else{
+        } else {
             setTransparent(false);
             setShrink(false);
         }
         setScrollPosition(offset / maxScroll, 1);
-    }
-    // Scroll effect for the header text
+    };
+
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', handleScroll);
         return () => {
-            window.removeEventListener('scroll', handleScroll)
-        }
-    }, [])
-    // Display size text to the side
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
-
-
-    return(
-        
+    return (
         <StyledHeader transparent={transparent} shrink={shrink}>
-        
-            {/* <StyledH1 scrollPosition={scrollPosition} transparent={transparent}>{text}</StyledH1> */}
-            {shrink ? (
-    <StyledH1Left scrollPosition={scrollPosition} windowWidth={windowWidth}>{text}</StyledH1Left>
-) : (
-    <StyledH1Top scrollPosition={scrollPosition}>{text}</StyledH1Top>
-)}
-    <StyledNavDrawer />
+            {!shrink && (
+                <StyledH1Top scrollPosition={scrollPosition}>{text}</StyledH1Top>
+            )}
+            {shrink && windowWidth > 600 && (
+                <StyledH1Left scrollPosition={scrollPosition} windowWidth={windowWidth}>{text}</StyledH1Left>
+            )}
+            <StyledNavDrawer />
         </StyledHeader>
-        
-    )
-
+    );
 }

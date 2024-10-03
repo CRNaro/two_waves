@@ -64,7 +64,7 @@ return (
       <Typography paragraph>
         Welcome to my professional webpage, and thank you for taking the
         time to visit. Your interest in getting to know me as well as my work, 
-        it means a great deal. Whether you’re a colleague, a potential
+        means a great deal. Whether you’re a colleague, a potential
         collaborator, or simply curious about my journey, I am honored
         by your presence.
       </Typography>
