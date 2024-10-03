@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Carousel from 'react-material-ui-carousel';
+// import Carousel from 'react-material-ui-carousel';
 import { 
     Paper, 
     Typography, 
@@ -45,11 +45,11 @@ import taco2 from '../../assets/images/taco2.png';
 import taco3 from '../../assets/images/taco3.png';
 import tipCalc1 from '../../assets/images/tipCalc1.png';
 import tipCalc2 from '../../assets/images/tipCalc2.png';
-// import schedule1 from '../../assets/images/Schedule1.png'; 
-// import schedule2 from '../../assets/images/Schedule2.png';
-// import schedule3 from '../../assets/images/Schedule3.png';
-// import schedule4 from '../../assets/images/Schedule4.png';
-// import schedule5 from '../../assets/images/Schedule5.png';
+import schedule1 from '../../assets/images/Schedule1.png'; 
+import schedule2 from '../../assets/images/Schedule2.png';
+import schedule3 from '../../assets/images/Schedule3.png';
+import schedule4 from '../../assets/images/Schedule4.png';
+import schedule5 from '../../assets/images/Schedule5.png';
 import mondays1 from '../../assets/images/mondays1.png';
 import mondays2 from '../../assets/images/mondays2.png';
 import mondays3 from '../../assets/images/mondays3.png';
@@ -66,6 +66,7 @@ import jotDown2 from '../../assets/images/jotDown2.png';
 import jotDown3 from '../../assets/images/jotDown3.png';
 import jotDown4 from '../../assets/images/jotDown4.png';
 import jotDown5 from '../../assets/images/jotDown5.png';
+import Carousel from '../ProjectCarousel/Carousel';
 
 //TODO: Add a description of the projects in the portfolio.  Make it so the description
 //      changes when the image changes in the carousel.  
@@ -97,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'rgba(247, 233, 186, 1)',
     width: '90%',
     height: '100%',
-    marginTop: '80px',
+    marginTop: '90px',
     marginBottom: '20px',
     boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
     zIndex: 2,
@@ -132,7 +133,8 @@ const useStyles = makeStyles((theme) => ({
   },
   descriptionCard: {
     width: '50%',
-    margin: '8px',
+    marginLeft: '2%',
+    marginRight: '4%',
     backgroundColor: 'black !important',
     color: '#FFFFF0 !important',
   },
@@ -222,7 +224,7 @@ const projects = [
           description: '.',
           technology: 'JavaScript, HTML5, CSS',
           link: 'https://github.com/CRNaro/pencil-me-in-05',
-          images: [],
+          images: [schedule1, schedule2, schedule3, schedule4, schedule5],
     },
     {
         //   src: imageOfMe,
@@ -291,7 +293,7 @@ export default function Portfolio() {
             {project.title}
           </Typography>
           <CardContent className={classes.carouselCard}>
-          <Card className={classes.descriptionCard}>
+          {/* <Card className={classes.descriptionCard}>
             <CardContent>
               <Typography variant="body1" component="div">
                 <strong>Project Description:</strong> {project.description}
@@ -305,8 +307,13 @@ export default function Portfolio() {
               <Box position="relative">
               </Box>
             </CardContent>
-          </Card>
-            <Carousel className={classes.carousel} autoPlay={false} onChange={(i) => setCurrentSlide(i)}>
+          </Card> */}
+          <Carousel
+            images={project.images}
+            alt={project.alt}
+            onImageClick={handleImageClick}
+          />
+            {/* <Carousel className={classes.carousel} autoPlay={false} onChange={(i) => setCurrentSlide(i)}>
               {project.images.map((image, i) => {
                 const { ref, inView } = useInView({
                   triggerOnce: true, // Load the image only once when it comes into view
@@ -328,8 +335,8 @@ export default function Portfolio() {
                   </Paper>
                 );
               })}
-            </Carousel>
-            {/* <Card className={classes.descriptionCard}>
+            </Carousel> */}
+            <Card className={classes.descriptionCard}>
               <CardContent>
                 <Typography variant="body1" component="div">
                   <strong>Project Description:</strong> {project.description}
@@ -343,7 +350,7 @@ export default function Portfolio() {
                 <Box position="relative">
                 </Box>
               </CardContent>
-            </Card> */}
+            </Card>
           </CardContent>
         </Card>
       ))}
