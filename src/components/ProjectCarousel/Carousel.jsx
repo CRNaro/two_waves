@@ -4,6 +4,11 @@ import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import {makeStyles } from '@mui/styles';
 import PropTypes from 'prop-types';
 
+//NOTE: I did not like how the MUI carousel was not working properly, so I 
+//     decided to create my own carousel component.  
+//TODO: Add a fade effect to the carousel images when they change.
+
+
 const useStyles = makeStyles((theme) => ({
     carouselContainer: {
         display: 'flex',

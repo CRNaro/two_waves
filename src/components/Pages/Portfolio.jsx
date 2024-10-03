@@ -45,11 +45,11 @@ import taco2 from '../../assets/images/taco2.png';
 import taco3 from '../../assets/images/taco3.png';
 import tipCalc1 from '../../assets/images/tipCalc1.png';
 import tipCalc2 from '../../assets/images/tipCalc2.png';
-import schedule1 from '../../assets/images/Schedule1.png'; 
-import schedule2 from '../../assets/images/Schedule2.png';
-import schedule3 from '../../assets/images/Schedule3.png';
-import schedule4 from '../../assets/images/Schedule4.png';
-import schedule5 from '../../assets/images/Schedule5.png';
+// import schedule1 from '../../assets/images/Schedule1.png'; 
+// import schedule2 from '../../assets/images/Schedule2.png';
+// import schedule3 from '../../assets/images/Schedule3.png';
+// import schedule4 from '../../assets/images/Schedule4.png';
+// import schedule5 from '../../assets/images/Schedule5.png';
 import mondays1 from '../../assets/images/mondays1.png';
 import mondays2 from '../../assets/images/mondays2.png';
 import mondays3 from '../../assets/images/mondays3.png';
@@ -221,16 +221,16 @@ const projects = [
         //   src: imageOfMe,
           alt: 'me',
           title: 'Pencil Me In',
-          description: '.',
+          description: 'An interactive day planner designed to help you stay organized and keep track of your daily projects and events. As someone who frequently juggles multiple tasks, I built this tool to streamline scheduling and ensure I complete everything before the day ends. With an intuitive design, this app visually tracks time, providing a clear overview of your tasks throughout the day.',
           technology: 'JavaScript, HTML5, CSS',
           link: 'https://github.com/CRNaro/pencil-me-in-05',
-          images: [schedule1, schedule2, schedule3, schedule4, schedule5],
+          images: [],
     },
     {
         //   src: imageOfMe,
           alt: 'me',
           title: 'Jot This Down',
-          description: 'This day planner app was created to help manage my projects and daily tasks effectively. The goal is to keep track of projects, appointments, and events throughout the day, ensuring that everything is organized and completed on time. The app visually reflects time progression, providing users with a clear view of past, current, and upcoming tasks.',
+          description: 'This note taker app was created to help manage my projects and daily tasks effectively. The goal is to keep track of project notes and ideas in one place, ensuring I never lose important information. With a simple and clean interface, this app allows me to jot down notes quickly and efficiently, keeping my thoughts organized and accessible.',
           technology: 'JavaScript, HTML5, CSS',
           link: '',
           images: [jotDown1, jotDown2, jotDown3, jotDown4, jotDown5],
