@@ -14,6 +14,7 @@ import AboutMe from "./AboutMe";
 
 const useStyles = makeStyles((theme) => ({
   mainContent: {
+    display: "flex",
     paddingTop: "10%",
     width: "25%",
     height: "100vh",
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     marginLeft: '25px',
+    // position: 'absolute',
     // marginTop: '300px',
     // marginBottom: '20px',
     // boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
@@ -84,6 +86,9 @@ linkedInLink: {
     padding: '5%',
    fontSize: '2rem',
  },
+ navText: {
+  
+ },
 }));
 
 export default function Home() {
@@ -95,7 +100,7 @@ export default function Home() {
       <div className={classes.cardContainer}>
         <Card className={classes.navCard}>
           <CardContent>
-            <Typography variant="h5" component="div">
+            <Typography className={classes.navText} variant="h5" component="div">
               <NavCard />
             </Typography>
           </CardContent>
