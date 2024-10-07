@@ -6,6 +6,7 @@ import backgroundTreeImg from "../../assets/images/trees.jpeg";
 import imageOfMe from "../../assets/images/medrawingstyle.png";
 import NavCard from "../Header/NavCard";
 import "../../styles/AboutMe.css";
+import { margin } from "@mui/system";
 
 //TODO: To wordy as is.  Need to break it up into smaller sections and add images to break up the text.
 
@@ -22,9 +23,23 @@ const useStyles = makeStyles((theme) => ({
           marginLeft: '45%',
           backgroundImage: `url(${backgroundTreeImg})`,
         boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
+        '@media (max-width: 1200px)': {
+          marginLeft: '0px',
+          width: '100%',
+          position: 'relative',
+          flexDirection: 'column',
+          '@media (max-width: 600px)': {
+            marginLTop: '50px !important',
+            marginLeft: '0px',
+            width: '100%',
+            position: 'relative',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          },
+        },
         },
         aboutCard: {
-                backgroundColor: 'rgba(247, 233, 186, 1)',
+          backgroundColor: 'rgba(247, 233, 186, 1)',
           width: '100vw',
           height: 'auto',
           marginLeft: '40px',
@@ -33,9 +48,15 @@ const useStyles = makeStyles((theme) => ({
           marginBottom: '20px',
        
           boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
-        //   position: 'relative',
+          position: 'relative',
           zIndex: 2,
         //   left: '80px',
+        '@media (max-width: 1200px)': {
+          margin: '0px',
+          width: '100%',
+          position: 'relative',
+          flexDirection: 'column',
+        },
         },
         
         styledTypography: {

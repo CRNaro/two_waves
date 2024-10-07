@@ -8,13 +8,16 @@ const useStyles = makeStyles((theme) => ({
     styledNav: {
         // right: 0,
         // top: -10,
-        // position: 'absolute',
+        position: 'relative',
         display: 'flex',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         zIndex: 3,
-        '@media (max-width: 600px)': {
-            flexDirection: 'column',
+        '@media (max-width: 1200px)': {
+        //    flexDirection: 'column', 
         },
+        '@media (max-width: 600px)': {
+               flexDirection: 'column', 
+            },
     },
     styledLink: {
         padding: '4px',

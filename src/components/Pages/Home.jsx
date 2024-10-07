@@ -10,6 +10,7 @@ import backgroundImage from "../../assets/images/trees.jpeg";
 import imageOfMe from "../../assets/images/medrawingstyle.png";
 import NavCard from "../Header/NavCard";
 import AboutMe from "./AboutMe";
+import { margin } from "@mui/system";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,9 +18,27 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     paddingTop: "10%",
     width: "25%",
-    height: "100vh",
+    // height: "70%",
     position: "fixed",
     zIndex: 1000,
+    '@media (max-width: 1200px)': {
+      marginLTop: '50px !important',
+      marginLeft: '0px',
+      width: '100%',
+      position: 'relative',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      zIndex: 1000,
+    },
+    '@media (max-width: 600px)': {
+      marginLTop: '50px !important',
+      marginLeft: '0px',
+      width: '100%',
+      position: 'relative',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      zIndex: 1000,
+    },
   },
   cardContainer: {
     display: "flex",

@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import React, { useState, useEffect } from 'react';
-import NavDrawer from '../Header/NavDrawer';
+import NavDrawer from './NavDrawer';
+
+// This component is a header that displays my name in a unique way. It is designed move to vertical position as the user scrolls down the page.
 
 const StyledHeader = styled.div`
     position: fixed;
@@ -12,11 +14,12 @@ const StyledHeader = styled.div`
     top: 0;
     left: ${props => props.shrink ? '0' : 'auto'};
     z-index: 1000;
-    width: ${props => props.shrink ? '70px' : '50%'};
+    width: ${props => props.shrink ? '70px' : '80%'};
     height: ${props => props.shrink ? '100vh' : '100px'};
     transition: background-color 0.5s ease;
     flex-direction: ${props => props.shrink ? 'column' : 'row'};
     opacity: ${props => props.shrink ? 1 : props.transparent ? 0.4 : 1};
+    // border: solid 1px black;
 `;
 
 const StyledH1Top = styled.h1`
@@ -24,13 +27,14 @@ const StyledH1Top = styled.h1`
     writing-mode: horizontal-tb;
     text-orientation: upright;
     transition: opacity 5s;
+    
 `;
 
 const StyledH1Left = styled.h1`
     opacity: ${props => props.scrollPosition};
     writing-mode: ${props => props.windowWidth <= 600 || props.shrink ? 'vertical-rl' : 'horizontal-tb'};
     text-orientation: upright;
-
+    
     @media (max-width: 600px) {
         writing-mode: vertical-rl;
         text-orientation: upright;
@@ -43,14 +47,17 @@ const StyledLetter = styled.div`
     margin: ${props => props.shrink ? '0 0 -2px 0' : '0 10px 0 0'};
 
     @media (max-width: 600px) {
+        
         font-size: 1rem;
+     
+    }
     }
 `;
 
 const StyledNavDrawer = styled(NavDrawer)`
     position: fixed;
-    top: 8%; // Adjust this value as needed
-    right: 5%; // Adjust this value as needed
+    top: 5%; 
+    right: 5%;
 `;
 
 export default function NameHeader() {
@@ -70,7 +77,7 @@ export default function NameHeader() {
         };
     }, []);
 
-    const text = "Christopher R. Naro".split("").map((word, index) => (
+    const text = "Christopher R Naro".split("").map((word, index) => (
         <StyledLetter shrink={shrink} key={index}>{word}</StyledLetter>
     ));
 

@@ -15,9 +15,31 @@ import PortfolioIcon from '@mui/icons-material/Work';
 import ResumeIcon from '@mui/icons-material/Description';
 import HamburgerNav from '../../assets/images/hamburgermenu.png';
 import { Link } from 'react-router-dom';
+import { makeStyles } from '@mui/styles';
+import Home from '../Pages/Home';
+
+const useStyles = makeStyles((theme) => ({
+  nav: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    width: '100%',
+    height: '100%',
+    zIndex: 2000,
+    '@media (max-width: 600px)': {
+      justifyContent: 'flex-end',
+      zIndex: 4000,
+    },
+  },
+navHamburger: {
+
+},
+
+}));
 
 
 export default function TemporaryDrawer({ className }) {
+  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
@@ -25,6 +47,7 @@ export default function TemporaryDrawer({ className }) {
   };
 
   const iconMap = {
+    Home: <HomeIcon />,
     About: <AboutIcon />,
     Contact: <ContactIcon />,
     Portfolio: <PortfolioIcon />,
@@ -32,8 +55,8 @@ export default function TemporaryDrawer({ className }) {
   }
 
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <List>
+    <Box className={classes.nav} sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+      {/* <List>
         {['Home'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <Link to="/">
@@ -47,9 +70,9 @@ export default function TemporaryDrawer({ className }) {
           </ListItem>
         ))}
       </List>
-      <Divider />
+      <Divider /> */}
       <List>
-        {['About', 'Contact', 'Portfolio', 'Resume'].map((text, index) => (
+        {['Home', 'About', 'Contact', 'Portfolio', 'Resume'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <Link to={`/${text.toLowerCase()}`}>
             <ListItemButton>
