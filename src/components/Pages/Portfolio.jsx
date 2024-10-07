@@ -68,6 +68,7 @@ import jotDown3 from '../../assets/images/jotDown3.png';
 import jotDown4 from '../../assets/images/jotDown4.png';
 import jotDown5 from '../../assets/images/jotDown5.png';
 import Carousel from '../ProjectCarousel/Carousel';
+import { display } from '@mui/system';
 
 //TODO: Add a description of the projects in the portfolio.  Make it so the description
 //      changes when the image changes in the carousel.  
@@ -86,14 +87,44 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${backgroundTreeImg})`,
     boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
     position: 'relative',
+    '@media (max-width: 1200px)': {
+      display: 'flex',
+      marginLeft: '0px',
+      width: '100%',
+      position: 'relative',
+      flexDirection: 'column',
+      '@media (max-width: 600px)': {
+        display: 'flex',
+        marginLTop: '50px !important',
+        marginLeft: '0px',
+        width: '100%',
+        position: 'relative',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      },
+    },
   },
   pageTitle: {
     position: 'absolute',
-    top: '10px',
+    // top: '10px',
     left: '20%',
-    transform: 'translateX(-50%)',
+    // transform: 'translateX(-50%)',
     color: 'white',
-    zIndex: 3,
+    // zIndex: 3,
+    // '@media (max-width: 1200px)': {
+    //   marginLeft: '20%',
+    //   width: '100%',
+    //   position: 'relative',
+    //   flexDirection: 'column',
+    //   '@media (max-width: 600px)': {
+    //     marginLTop: '50px !important',
+    //     marginLeft: '20%',
+    //     width: '100%',
+    //     position: 'relative',
+    //     flexDirection: 'column',
+    //     justifyContent: 'center',
+    //   },
+    // },
   },
   portfolioCard: {
     backgroundColor: 'rgba(247, 233, 186, 1)',
@@ -104,12 +135,44 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
     zIndex: 2,
     position: 'relative',
+    '@media (max-width: 1200px)': {
+      display: 'flex',
+      marginLeft: '0px',
+      width: '100%',
+      position: 'relative',
+      flexDirection: 'column',
+      '@media (max-width: 600px)': {
+        display: 'flex',
+        marginLTop: '50px !important',
+        marginLeft: '0px',
+        width: '100%',
+        position: 'relative',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      },
+    },
   },
   carouselCard: {
     display: 'flex',
     justifyContent: 'center',
     width: '100%',
     height: '100%',
+    '@media (max-width: 1200px)': {
+      display: 'flex',
+      marginLeft: '0px',
+      width: '100%',
+      position: 'relative',
+      flexDirection: 'column',
+      '@media (max-width: 600px)': {
+        display: 'flex',
+        marginLTop: '50px !important',
+        marginLeft: '0px',
+        width: '100%',
+        position: 'relative',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      },
+    },
   },
   carousel: {
     width: '60%',
@@ -121,6 +184,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     height: '100%',
     width: '100%',
+    
   },
   imageContainer: {
     width: '100%',
@@ -138,6 +202,20 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '4%',
     backgroundColor: 'black !important',
     color: '#FFFFF0 !important',
+    '@media (max-width: 1200px)': {
+      marginLeft: '0px',
+      width: '100%',
+      position: 'relative',
+      flexDirection: 'column',
+      '@media (max-width: 600px)': {
+        marginLTop: '50px !important',
+        marginLeft: '0px',
+        width: '100%',
+        position: 'relative',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      },
+    },
   },
   navButton: {
     position: 'absolute',

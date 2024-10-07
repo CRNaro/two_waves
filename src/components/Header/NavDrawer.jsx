@@ -31,9 +31,7 @@ const useStyles = makeStyles((theme) => ({
       zIndex: 4000,
     },
   },
-navHamburger: {
 
-},
 
 }));
 

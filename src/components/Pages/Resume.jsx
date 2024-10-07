@@ -26,7 +26,7 @@ import mongodbLogo from "../../assets/images/mongodbLogo.png";
 import djangoLogo from "../../assets/images/djangoLogo.png";
 import phpLogo from "../../assets/images/phpLogo.png";
 import resumePDF from "../../assets/pdf/resume.pdf";
-import { height, width } from "@mui/system";
+import { display, height, width } from "@mui/system";
 
 
 //TODO: Set up and use SVG images for the logos to make them scalable.
@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
   mainContent: {
     //   paddingTop: '30%',
     //   backgroundColor: 'lightblue', // Added for debugging
+
   },
   root: {
     display: "flex",
@@ -44,6 +45,20 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "45%",
     backgroundImage: `url(${backgroundTreeImg})`,
     boxShadow: "10px 5px 10px 5px rgba(0, 0, 0, .25)",
+    '@media (max-width: 1200px)': {
+      marginLeft: '0px',
+      width: '100%',
+      position: 'relative',
+      flexDirection: 'column',
+      '@media (max-width: 600px)': {
+        marginLTop: '50px !important',
+        marginLeft: '0px',
+        width: '100%',
+        position: 'relative',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      },
+    },
   },
   styledCardContent: {
     width: "100%",
@@ -54,6 +69,20 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     flexWrap: "wrap",
     // justifyContent: "center",
+    '@media (max-width: 1200px)': {
+      marginLeft: '0px',
+      width: '100%',
+      position: 'relative',
+      flexDirection: 'column',
+      '@media (max-width: 600px)': {
+        marginLTop: '50px !important',
+        marginLeft: '0px',
+        width: '100%',
+        position: 'relative',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      },
+    },
   },
   proficienciesCard: {
     backgroundColor: "rgba(247, 233, 186, .9)",
@@ -67,7 +96,21 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     padding: "30px",
-    transform: "translateX(-20%)",
+    // transform: "translateX(-20%)",
+    // '@media (max-width: 1200px)': {
+    //   marginLeft: '0px',
+    //   width: '100%',
+    //   position: 'relative',
+    //   flexDirection: 'column',
+    //   '@media (max-width: 600px)': {
+    //     marginLTop: '50px !important',
+    //     marginLeft: '0px',
+    //     width: '100%',
+    //     position: 'relative',
+    //     flexDirection: 'column',
+    //     justifyContent: 'center',
+    //   },
+    // },
   },
   styledTypography: {
     //   position: 'absolute',
@@ -81,6 +124,7 @@ const useStyles = makeStyles((theme) => ({
   aboutCard: {
     backgroundColor: "rgba(247, 233, 186, .1) !important",
     margin: "2%",
+    
   },
   logo: {
     width: "auto",

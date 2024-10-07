@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
         mainContent: {
         //   paddingTop: '30%',
         //   backgroundColor: 'lightblue', // Added for debugging
+    
         },
         root: {
           display: 'flex',
@@ -26,9 +27,23 @@ const useStyles = makeStyles((theme) => ({
           marginLeft: '45%',
           backgroundImage: `url(${backgroundTreeImg})`,
         boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
+        '@media (max-width: 1200px)': {
+          marginLeft: '0px',
+          width: '100%',
+          position: 'relative',
+          flexDirection: 'column',
+          '@media (max-width: 600px)': {
+            marginLTop: '50px !important',
+            marginLeft: '0px',
+            width: '100%',
+            position: 'relative',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          },
+        },
         },
         aboutCard: {
-                backgroundColor: 'rgba(247, 233, 186, 1)',
+            backgroundColor: 'rgba(247, 233, 186, 1)',
           width: '100vw',
           height: 'auto',
           marginLeft: '40px',
@@ -40,6 +55,20 @@ const useStyles = makeStyles((theme) => ({
         //   position: 'relative',
           zIndex: 2,
         //   left: '80px',
+        '@media (max-width: 1200px)': {
+          marginLeft: '0px',
+          width: '100%',
+          position: 'relative',
+          flexDirection: 'column',
+          '@media (max-width: 600px)': {
+            marginLTop: '50px !important',
+            marginLeft: '0px',
+            width: '100%',
+            position: 'relative',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          },
+        },
         },
         
         styledTypography: {

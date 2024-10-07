@@ -58,6 +58,7 @@ const StyledNavDrawer = styled(NavDrawer)`
     position: fixed;
     top: 5%; 
     right: 5%;
+    background-color: rgba(247, 233, 186, .6);
 `;
 
 export default function NameHeader() {
