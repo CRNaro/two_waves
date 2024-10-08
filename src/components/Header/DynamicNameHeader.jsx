@@ -45,7 +45,7 @@ const StyledLetter = styled.div`
     display: ${props => props.shrink ? 'block' : 'inline-block'};
     transform: ${props => props.shrink ? 'rotate(90deg)' : 'none'};
     margin: ${props => props.shrink ? '0 0 -2px 0' : '0 10px 0 0'};
-
+    color: white;
     @media (max-width: 600px) {
         
         font-size: 1rem;
@@ -57,7 +57,7 @@ const StyledLetter = styled.div`
 const StyledNavDrawer = styled(NavDrawer)`
     position: fixed;
     top: 5%; 
-    right: 5%;
+    right: 1%;
     background-color: rgba(247, 233, 186, .6);
 `;
 
@@ -78,7 +78,7 @@ export default function NameHeader() {
         };
     }, []);
 
-    const text = "Christopher R Naro".split("").map((word, index) => (
+    const text = "Christopher .R.  Naro".split("").map((word, index) => (
         <StyledLetter shrink={shrink} key={index}>{word}</StyledLetter>
     ));
 

@@ -21,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
     // height: "70%",
     position: "fixed",
     zIndex: 1000,
+    
+  
     '@media (max-width: 1200px)': {
       marginLTop: '50px !important',
       marginLeft: '0px',
@@ -45,10 +47,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
   navCard: {
-    backgroundColor: "rgba(247, 233, 186, 1) !important",
+    backgroundColor: "rgba(179, 138, 88, .4) !important",
+    // border: "2px solid #778DA9",
     width: "100%",
     height: "100%",
-    marginLeft: '25px',
+    marginLeft: '28px',
+    // boxShadow: '0 0 20px 20px rgba(65, 90, 119, 0.75) !important', //backlight effect
     // position: 'absolute',
     // marginTop: '300px',
     // marginBottom: '20px',
@@ -68,9 +72,9 @@ const useStyles = makeStyles((theme) => ({
   styledImage: {
     width: "60%",
     borderRadius: "1%",
-    border: "1px solid black",
+    border: "1px solid #778DA9",
     padding: "5px",
-    backgroundColor: "#111313",
+    backgroundColor: "#778DA9",
     // height: '80%',
     // marginTop: '25px',
     // marginLeft: '0px',

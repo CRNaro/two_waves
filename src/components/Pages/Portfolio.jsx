@@ -127,12 +127,12 @@ const useStyles = makeStyles((theme) => ({
     // },
   },
   portfolioCard: {
-    backgroundColor: 'rgba(247, 233, 186, 1)',
+    backgroundColor: 'rgba(224, 225, 221, .9) !important',
     width: '90%',
     height: '100%',
     marginTop: '90px',
     marginBottom: '20px',
-    boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
+    boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .85) !important',
     zIndex: 2,
     position: 'relative',
     '@media (max-width: 1200px)': {

@@ -31,7 +31,23 @@ const useStyles = makeStyles((theme) => ({
       zIndex: 4000,
     },
   },
-
+  customButton: {
+    backgroundColor: 'rgba(35, 33, 30, .5)',
+    color: 'white',
+    border: 'none',
+    outline: 'none',
+    boxShadow: 'none',
+    cursor: 'pointer',
+    padding: '10px',
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+  },
+  hamburgerIcon: {
+    color: 'white',
+    width: '30px',
+    height: '30px',
+  },
 
 }));
 
@@ -88,14 +104,21 @@ export default function TemporaryDrawer({ className }) {
   );
 
   return (
-    <div className={className}>
-      <Button onClick={toggleDrawer(true)} sx={{
-    backgroundColor: 'primary.main', 
-    color: 'white',
-    '&:hover': {
-      backgroundColor: 'primary.dark', 
-    }
-  }}><img src={HamburgerNav} width='30' height='30'/></Button>
+  //   <div className={className}>
+  //     <Button onClick={toggleDrawer(true)} sx={{
+  //   backgroundColor: 'primary.main', 
+  //   color: 'white',
+  //   border: 'none',
+  //   outline: 'none',
+  //   boxShadow: 'none',
+  //   '&:hover': {
+  //     backgroundColor: 'primary.dark', 
+  //   }
+  // }}><img src={HamburgerNav} width='30' height='30'/></Button>
+  <div className={className}>
+      <div className={classes.customButton} onClick={toggleDrawer(true)}>
+        <img src={HamburgerNav} className={classes.hamburgerIcon} alt="Hamburger Menu" />
+      </div>
       <Drawer anchor='right' open={open} onClose={toggleDrawer(false)}
       sx={{
         '& .MuiDrawer-paper': { 

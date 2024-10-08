@@ -26,7 +26,7 @@ import mongodbLogo from "../../assets/images/mongodbLogo.png";
 import djangoLogo from "../../assets/images/djangoLogo.png";
 import phpLogo from "../../assets/images/phpLogo.png";
 import resumePDF from "../../assets/pdf/resume.pdf";
-import { display, height, width } from "@mui/system";
+import { display, height, padding, width } from "@mui/system";
 
 
 //TODO: Set up and use SVG images for the logos to make them scalable.
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     width: "60vw",
     marginLeft: "45%",
     backgroundImage: `url(${backgroundTreeImg})`,
-    boxShadow: "10px 5px 10px 5px rgba(0, 0, 0, .25)",
+    // boxShadow: '0 0 20px 20px rgba(65, 90, 119, 0.75) !important', //backlight effect
     '@media (max-width: 1200px)': {
       marginLeft: '0px',
       width: '100%',
@@ -63,8 +63,8 @@ const useStyles = makeStyles((theme) => ({
   styledCardContent: {
     width: "100%",
     height: "auto",
-    backgroundColor: "rgba(247, 233, 186, .1)",
-    // marginBottom: "40px",
+    backgroundColor: "rgba(224, 225, 221, .9) !important",
+    // marginBottom: "40px", 
     display: "flex",
     flexDirection: "column",
     flexWrap: "wrap",
@@ -85,10 +85,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   proficienciesCard: {
-    backgroundColor: "rgba(247, 233, 186, .9)",
+    backgroundColor: "rgba(224, 225, 221, .9) !important",
     width: "auto",
     height: "auto",
-    boxShadow: "10px 5px 10px 5px rgba(0, 0, 0, .25)",
+    boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .85) !important',
     marginTop: "100px",
     marginBottom: "40px",
     zIndex: 2,
@@ -113,18 +113,13 @@ const useStyles = makeStyles((theme) => ({
     // },
   },
   styledTypography: {
-    //   position: 'absolute',
-    // left: "13%",
-    // top: "10%",
-    // zIndex: 3,
-    // fontSize: "1.5rem",
-    // textAlign: "left",
-    //   color: 'white',
+   
   },
   aboutCard: {
     backgroundColor: "rgba(247, 233, 186, .1) !important",
-    margin: "2%",
-    
+    margin: "5%",
+    padding: "2%",
+    boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .50) !important'
   },
   logo: {
     width: "auto",
@@ -281,7 +276,6 @@ export default function Resume() {
       </Typography>
       <Card
         className={classes.proficienciesCard}
-        style={{ backgroundColor: "rgba(247, 233, 186, .9)" }}
       >
         <CardContent className={classes.resumeCardContent}>
           <Button

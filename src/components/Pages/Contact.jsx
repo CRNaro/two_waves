@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
         },
         },
         aboutCard: {
-            backgroundColor: 'rgba(247, 233, 186, 1)',
+            backgroundColor: 'rgba(224, 225, 221, .9) !important',
           width: '100vw',
           height: 'auto',
           marginLeft: '40px',
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
           marginTop: '200px',
           marginBottom: '20px',
        
-          boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .25)',
+          boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .75) !important',
         //   position: 'relative',
           zIndex: 2,
         //   left: '80px',

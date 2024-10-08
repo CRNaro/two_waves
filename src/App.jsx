@@ -18,12 +18,14 @@ import { margin } from '@mui/system'
 //TODO: Make sure the site is responsive
 //TODO: Make sure the site is accessible
 
+//STYLING NOTES: 
+// color palette: #0D1B2A, #1B263B, #415A77, #778DA9, #F7E9BA
 
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: 'rgba(247, 233, 186, .6)'
+      main: '#0d1f22'
     },
     secondary: {
       main: 'rgba(247, 233, 186, .6)'
