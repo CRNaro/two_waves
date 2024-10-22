@@ -84,6 +84,11 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  button:{
+    display: 'flex !important',
+    justifyContent: 'space-between !important',
+    margin: '10px !important',
+  },
   proficienciesCard: {
     backgroundColor: "rgba(224, 225, 221, .9) !important",
     width: "auto",
@@ -96,21 +101,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     padding: "30px",
-    // transform: "translateX(-20%)",
-    // '@media (max-width: 1200px)': {
-    //   marginLeft: '0px',
-    //   width: '100%',
-    //   position: 'relative',
-    //   flexDirection: 'column',
-    //   '@media (max-width: 600px)': {
-    //     marginLTop: '50px !important',
-    //     marginLeft: '0px',
-    //     width: '100%',
-    //     position: 'relative',
-    //     flexDirection: 'column',
-    //     justifyContent: 'center',
-    //   },
-    // },
+ 
   },
   styledTypography: {
    
@@ -294,6 +285,7 @@ export default function Resume() {
       >
         <CardContent className={classes.resumeCardContent}>
           <Button
+          className={classes.button}
             variant="contained"
             color="primary"
             onClick={() => {
@@ -309,6 +301,7 @@ export default function Resume() {
           </Button>
 
           <Button
+            className={classes.button}
             variant="contained"
             color="primary"
             onClick={handleShowResume}
