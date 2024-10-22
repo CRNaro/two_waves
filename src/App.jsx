@@ -8,6 +8,7 @@ import Portfolio from './components/Pages/Portfolio'
 import Resume from './components/Pages/Resume'
 import DynamicNameHeader from './components/Header/DynamicNameHeader'
 import Window from './components/Pages/Window'
+import Footer from './components/Footer/Footer'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { Global, css } from '@emotion/react';
 import { makeStyles } from '@mui/styles'; 
@@ -34,9 +35,15 @@ const theme = createTheme({
 })
 
 const useStyles = makeStyles((theme) => ({
+  appContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+ 
+  },
   contentContainer: {
     display: 'flex',
-    flexDirection: 'row',
+    flex: '1 0 auto',
     marginTop: '2%',
     '@media (max-width: 1200px)': {
       flexDirection: 'column',
@@ -58,6 +65,11 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '10%',
     },
   },
+  footer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+  },
 
 
 }));
@@ -69,9 +81,16 @@ function App() {
     <ThemeProvider theme={theme}>
       <Global styles={css`body{
         background-color: ${theme.palette.primary.main};
+        height: auto; 
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+
       }`}/>
  
  <Router>
+
+        <div className={classes.appContainer}>
         <div className={classes.nameHeader}>
         <DynamicNameHeader />
         </div>
@@ -89,7 +108,12 @@ function App() {
           </Route>
         </Routes>
         </div>
+        {/* <div className={classes.footer}>
+        <Footer />
+        </div> */}
+        </div>
       </Router>
+     
     </ThemeProvider>
   )
 }

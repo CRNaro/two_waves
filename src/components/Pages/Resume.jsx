@@ -247,7 +247,7 @@ const backEndProficiencies = [
 
 export default function Resume() {
   const classes = useStyles();
-  const [expanded, setExpanded] = useState(null);
+  const [expanded, setExpanded] = useState({ type: null, index: null });
   const [open, setOpen] = useState(false);
   const [showResume, setShowResume] = useState(false);
 
@@ -255,19 +255,34 @@ export default function Resume() {
     setShowResume(!showResume);
   };
 
-  const handleOpen = (index) => {
-    setExpanded(index);
+  const handleOpen = (type, index) => {
+    setExpanded({ type, index });
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
-    setExpanded(null);
+    setExpanded({ type: null, index: null });
   };
+
+  const getProficiency = () => {
+    if (expanded.type === 'frontEnd') {
+      console.log('FrontEnd', frontEndProficiencies[expanded.index]);
+      return frontEndProficiencies[expanded.index];
+    } else if (expanded.type === 'backEnd') {
+      console.log('BackEnd', backEndProficiencies[expanded.index]);
+      return backEndProficiencies[expanded.index];
+    }
+    return null;
+  };
+
+  
 
   const handleExpandClick = (index) => {
     setExpanded(expanded === index ? null : index);
   };
+
+  const proficiency = getProficiency();
 
   return (
     <Box className={classes.root}>
@@ -324,19 +339,19 @@ export default function Resume() {
               flexWrap="wrap"
               justifyContent="center"
             >
-              {frontEndProficiencies.map((frontEndProficiencies, index) => (
+              {frontEndProficiencies.map((proficiency, index) => (
                 <Box
                   key={index}
                   width={{ xs: "100%", sm: "45%", md: "29%" }}
                   mb={3}
                 >
                   <Card className={classes.aboutCard}>
-                    <CardActionArea onClick={() => handleOpen(index)}>
+                    <CardActionArea onClick={() => handleOpen('frontEnd', index)}>
                       <CardMedia
                         component="img"
-                        alt={frontEndProficiencies.name}
-                        image={frontEndProficiencies.logo}
-                        // title={frontEndProficiencies.name}
+                        alt={proficiency.name}
+                        image={proficiency.logo}
+                        title={proficiency.name}
                         className={classes.logo}
                       />
                       <CardContent>
@@ -346,7 +361,7 @@ export default function Resume() {
                           component="div"
                           style={{ textWrap: Balance }}
                         >
-                          {frontEndProficiencies.name}
+                          {proficiency.name}
                         </Typography>
                         {/* {expanded === index && (
                               <Typography variant="body2" color="textSecondary" component="p" className={classes.expandedContent}>
@@ -359,15 +374,15 @@ export default function Resume() {
                 </Box>
               ))}
             </Stack>
-            <Modal open={open} onClose={handleClose} className={classes.modal}>
+            {/* <Modal open={open} onClose={handleClose} className={classes.modal}>
               <Box className={classes.modalContent}>
-                {expanded !== null && (
+                {proficiency && (
                   <>
                     <CardMedia
                       component="img"
-                      alt={frontEndProficiencies[expanded].name}
-                      image={frontEndProficiencies[expanded].logo}
-                      title={frontEndProficiencies.name}
+                      alt={proficiency.name}
+                      image={proficiency.logo}
+                      title={proficiency.name}
                       className={classes.modalLogo}
                     />
                     <Typography variant="h5" component="div">
@@ -383,7 +398,7 @@ export default function Resume() {
                   </>
                 )}
               </Box>
-            </Modal>
+            </Modal> */}
             <Typography variant="h4">Back End Proficiencies</Typography>
             <Stack
               spacing={3}
@@ -391,20 +406,20 @@ export default function Resume() {
               flexWrap="wrap"
               justifyContent="center"
             >
-              {backEndProficiencies.map((backEndProficiencies, index) => (
+              {backEndProficiencies.map((proficiency, index) => (
                 <Box
                   key={index}
                   width={{ xs: "100%", sm: "45%", md: "30%" }}
                   mb={3}
                 >
                   <Card className={classes.aboutCard}>
-                    <CardActionArea onClick={() => handleOpen(index)}>
+                    <CardActionArea onClick={() => handleOpen('backEnd', index)}>
                       <CardMedia
                         component="img"
-                        alt={backEndProficiencies.name}
+                        alt={proficiency.name}
                         height="140"
-                        image={backEndProficiencies.logo}
-                        title={backEndProficiencies.name}
+                        image={proficiency.logo}
+                        title={proficiency.name}
                         className={classes.logo}
                       />
                       <CardContent>
@@ -414,7 +429,7 @@ export default function Resume() {
                           component="div"
                           style={{ textWrap: Balance }}
                         >
-                          {backEndProficiencies.name}
+                          {proficiency.name}
                         </Typography>
                         {/* {expanded === index && (
                           <Typography
@@ -434,24 +449,19 @@ export default function Resume() {
             </Stack>
             <Modal open={open} onClose={handleClose} className={classes.modal}>
               <Box className={classes.modalContent}>
-                {expanded !== null && (
+                {proficiency && (
                   <>
                     <CardMedia
                       component="img"
-                      alt={backEndProficiencies[expanded].name}
-                      image={backEndProficiencies[expanded].logo}
-                      title={backEndProficiencies.name}
+                      alt={proficiency.name}
+                      image={proficiency.logo}
                       className={classes.modalLogo}
                     />
                     <Typography variant="h5" component="div">
-                      {backEndProficiencies[expanded].name}
+                      {proficiency.name}
                     </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      {backEndProficiencies[expanded].description}
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      {proficiency.description}
                     </Typography>
                   </>
                 )}

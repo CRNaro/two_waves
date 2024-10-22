@@ -16,7 +16,7 @@ import { margin } from "@mui/system";
 const useStyles = makeStyles((theme) => ({
   mainContent: {
     display: "flex",
-    paddingTop: "10%",
+    paddingTop: "5%",
     width: "25%",
     // height: "70%",
     position: "fixed",

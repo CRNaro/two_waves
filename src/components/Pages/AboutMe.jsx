@@ -57,8 +57,12 @@ const useStyles = makeStyles((theme) => ({
           position: 'relative',
           flexDirection: 'column',
         },
+     
         },
-        
+        paragraphHeader: {
+          fontWeight: 'bold !important',
+          fontSize: '5px',
+        },
         styledTypography: {
         //   position: 'absolute',
           left: '13%',
@@ -68,7 +72,12 @@ const useStyles = makeStyles((theme) => ({
           textAlign: 'left',
         //   color: 'white',
         },
-       
+       list: {
+        textAlign: 'left',
+       },
+       listItem: {
+        marginLeft: '20px',
+       },
       
       }));
 
@@ -81,70 +90,82 @@ return (
                         </Typography>
         <Card className={classes.aboutCard} >
         <CardContent className={classes.styledCardContent}>
-    <div className={classes.styledTypography}>
-      <Typography paragraph>
-        Welcome to my professional webpage, and thank you for taking the
-        time to visit. Your interest in getting to know me as well as my work, 
-        means a great deal. Whether you’re a colleague, a potential
-        collaborator, or simply curious about my journey, I am honored
-        by your presence.
+    <div>
+      <Typography className={classes.paragraphHeader}>
+       Welcome
       </Typography>
-      <Typography paragraph>
-        With over a decade of leadership experience in the craft beer
-        industry, I am now poised to apply my skills and passion to the
-        dynamic world of web development. My journey began with hands-on
-        brewing at Throwback Brewery, where I learned the importance of
-        meticulous attention to detail, effective communication, and the
-        art of crafting exceptional experiences for customers.
+      <Typography  className={classes.styledTypography}>
+      Hi, and thank you for stopping by! Whether you&apos;re a 
+      potential collaborator, fellow developer, or just curious about my journey, I&apos;m honored by your visit.
       </Typography>
-      <Typography paragraph>
-        Transitioning from brewing to tech, I recently completed the
-        Full Stack Web Development Boot Camp at UNH, immersing myself in
-        cutting-edge technologies like React, Node.js, and RESTful APIs.
-        My background in team leadership and project management from my
-        time as Head Brewer at both Throwback Brewery and SoMe Brewing
-        Company has prepared me well for the collaborative environment
-        of software development.
+      <Typography className={classes.paragraphHeader}>
+      From Breweries to Code
       </Typography>
-      <Typography paragraph>
-        My technical toolkit now includes proficiency in front-end
-        development with React, JavaScript, HTML, and CSS, as well as
-        back-end skills with Node.js, Express.js, and building databases
-        via MySQL and MongoDB. I am excited to leverage these skills to
-        create responsive, user-friendly websites that not only meet
-        client needs but exceed their expectations.
+      <Typography  className={classes.styledTypography}>
+      My career began in the craft beer industry, where I spent over a decade mastering 
+      leadership, teamwork, and the art of creating experiences. I worked at Throwback Brewery 
+      and SoMe Brewing Company, becoming Head Brewer at both. Brewing taught me how to handle attention 
+      to detail, coordinate with multiple teams, and ensure everything—from ingredients to customer experience—was top-notch.
       </Typography>
-      <Typography paragraph>
-        Entering the web development realm, my passion for learning
-        drives me forward. I am captivated by the fusion of design,
-        technology, and user experience, constantly seeking new
-        challenges and innovations. Every project is an opportunity to
-        expand my skills and deepen my understanding. Collaborating with
-        forward-thinking professionals, I am committed to continuous
-        growth and pushing the boundaries of what’s possible.
+      <Typography className={classes.paragraphHeader}>
+      A New Passion: Web Development
       </Typography>
-      <Typography paragraph>
-        With a strong foundation in project management, customer
-        service, and problem-solving, I am eager to contribute to a
-        forward-thinking team where I can continue to expand my skills
-        and make a meaningful impact in the world of web development.
+      <Typography  className={classes.styledTypography}>
+      After an incredible journey in brewing, I wanted to challenge myself in new ways. In 2024, 
+      I graduated from the UNH Full Stack Web Development Boot Camp, where I developed skills in:
       </Typography>
-      <Typography paragraph>
-        As you navigate through these pages, I hope you’ll gain insight
-        into who I am as a professional and as an individual. Whether
-        you’re seeking collaboration opportunities, exploring potential
-        partnerships, or simply looking to connect, I am excited about
-        the possibility of us crossing paths and creating meaningful
-        connections.
+<ul className={classes.list}>
+  <li className={classes.listItem}>
+<Typography><strong>Front-end</strong>: React, JavaScript, HTML, CSS </Typography>
+  </li>
+  <li className={classes.listItem}>
+  <Typography><strong>Back-end</strong>: Node.js, Express.js, MySQL, MongoDB </Typography>
+  </li>
+  <li className={classes.listItem}>
+  <Typography>APIs and building responsive, user-friendly websites </Typography>
+  </li>
+</ul>
+
+      <Typography className={classes.paragraphHeader}>
+      Blending Creativity, Technology, and Collaboration
       </Typography>
-      <Typography paragraph>
-        Thank you once again for stopping by. Your visit is appreciated
-        more than words can express. Please feel free to reach out if
-        you have any questions or if there’s anything I can assist you
-        with.
+      <Typography  className={classes.styledTypography}>
+      My transition to tech wasn&apos;t just about learning new tools—it&apos;s about bringing the 
+      same creativity and collaboration I used in brewing into web development. Working on both 
+      solo and team projects, I thrive in environments where ideas are shared and problems are solved creatively.
       </Typography>
-      <Typography paragraph>Warm regards,</Typography>
-      <Typography paragraph>Christopher R. Naro</Typography>
+      <Typography className={classes.paragraphHeader}>
+      What Drives Me
+      </Typography>
+      <Typography  className={classes.styledTypography}>
+      I love exploring the intersection of design, user experience, and technology. 
+      Every project is an opportunity to learn and grow. Whether I&apos;m building APIs or crafting front-end layouts, 
+      I aim to create seamless digital experiences.
+
+      </Typography>
+      <Typography className={classes.paragraphHeader}>
+      Let&apos;s Build Something Together
+      </Typography>
+      <Typography  className={classes.styledTypography}>
+      I&apos;m eager to join a forward-thinking team where I can apply my skills, learn from others, 
+      and make a meaningful impact. Whether you&apos;re here to connect, collaborate, or explore potential partnerships,
+       I&apos;m excited about the possibilities.
+      </Typography>
+      <Typography className={classes.paragraphHeader}>
+      Thank You for Visiting
+      </Typography>
+      <Typography  className={classes.styledTypography}>
+      Your visit means more than words can express. I look forward to seeing where our paths may cross. 
+      Feel free to reach out with any questions, collaboration ideas, or just to say hello!
+      </Typography>
+      <Typography className={classes.paragraphHeader}>
+     
+      </Typography>
+      <Typography  className={classes.styledTypography}>
+    
+      </Typography>
+      <Typography>Warm regards,</Typography>
+      <Typography>Christopher R. Naro</Typography>
     </div>
   </CardContent>
         </Card>
