@@ -51,6 +51,11 @@ const StyledLetter = styled.div`
         font-size: 1rem;
      
     }
+          @media (max-width: 440px) {
+        
+        font-size: .8rem;
+     
+    }
     }
 `;
 
@@ -78,8 +83,8 @@ export default function NameHeader() {
         };
     }, []);
 
-    const text = "Christopher .R.  Naro".split("").map((word, index) => (
-        <StyledLetter shrink={shrink} key={index}>{word}</StyledLetter>
+    const text = "Christopher R Naro".split("").map((word, index) => (
+        <StyledLetter shrink={shrink} key={index}>{word === " " ? "\u00A0" : word}</StyledLetter>
     ));
 
     const handleScroll = () => {

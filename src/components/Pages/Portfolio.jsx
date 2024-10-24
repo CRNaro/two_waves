@@ -223,12 +223,11 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translateY(-50%)',
     zIndex: 4,
   },
-//  closeButton: {
-//     position: 'absolute',
-//     left: '45%',
-   
-//     // color: theme.palette.grey[500],
-//  },
+  icon: {
+    color: 'white',
+    fontSize: '2.5rem !important',
+    cursor: 'pointer',
+  },
 }));
 
 const projects = [
@@ -413,7 +412,8 @@ export default function Portfolio() {
                 <Typography variant="body2" component="div" style={{ marginTop: '10px' }}>
                   <strong>Technologies Used:</strong> {project.technology}
                 </Typography>
-                <Typography variant="body2" component="div" style={{ marginTop: '10px' }}>
+                <Typography variant="body2" component="div" style={{ marginTop: '10px'}}>
+                  {/* GitHub Repository: */}
                   <Link href={project.link} target="_blank" rel="noopener"><GitHubIcon className={classes.icon}/></Link>
                 </Typography>
                 <Box position="relative">
