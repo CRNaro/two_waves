@@ -89,14 +89,14 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     '@media (max-width: 1200px)': {
       display: 'flex',
-      marginLeft: '0px',
+      marginLeft: '1.5%',
       width: '100%',
       position: 'relative',
       flexDirection: 'column',
       '@media (max-width: 600px)': {
         display: 'flex',
         marginLTop: '50px !important',
-        marginLeft: '0px',
+        marginLeft: '-2.5%',
         width: '100%',
         position: 'relative',
         flexDirection: 'column',
@@ -128,8 +128,8 @@ const useStyles = makeStyles((theme) => ({
   },
   portfolioCard: {
     backgroundColor: 'rgba(224, 225, 221, .9) !important',
-    width: '90%',
     height: '100%',
+    width: '100%',
     marginTop: '90px',
     marginBottom: '20px',
     boxShadow: '10px 5px 10px 5px rgba(0, 0, 0, .85) !important',
@@ -138,7 +138,7 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 1200px)': {
       display: 'flex',
       marginLeft: '0px',
-      width: '100%',
+      width: '80vw',
       position: 'relative',
       flexDirection: 'column',
       '@media (max-width: 600px)': {
@@ -160,14 +160,13 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 1200px)': {
       display: 'flex',
       marginLeft: '0px',
-      width: '100%',
-      position: 'relative',
+      width: '77vw',
+      // position: 'relative',
       flexDirection: 'column',
       '@media (max-width: 600px)': {
         display: 'flex',
         marginLTop: '50px !important',
-        marginLeft: '0px',
-        width: '100%',
+        width: '77vw',
         position: 'relative',
         flexDirection: 'column',
         justifyContent: 'center',
